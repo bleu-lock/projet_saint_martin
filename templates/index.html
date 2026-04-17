@@ -78,68 +78,83 @@
     </div>
 </section>
 
-<!-- Mission Section -->
-<section class="py-24 bg-asm-offwhite overflow-hidden">
+<!-- Mission Section (Redesigned) -->
+<section class="py-24 bg-asm-offwhite overflow-hidden relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 reveal-fade">
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-asm-dark mb-4">Notre Mission au Quotidien</h2>
-            <div class="w-24 h-1 bg-asm-gold mx-auto mb-6"></div>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nous intervenons sur plusieurs fronts pour offrir un accompagnement complet et respectueux de la dignité humaine.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-left">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-walking"></i>
-                </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Soutien moral & Maraudes</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Présence humaine auprès des personnes isolées. Rencontre nocturne avec les sans-abris pour rompre l'isolement.</p>
-            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            <!-- Card 2 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-fade" style="transition-delay: 100ms;">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-utensils"></i>
+            <!-- Left Column: Content -->
+            <div class="reveal-left">
+                <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-4 block">Notre Engagement</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-asm-dark mb-6 leading-tight">Une Mission de <span class="text-asm-bordeaux italic">Présence et d'Action</span></h2>
+                <div class="w-20 h-1 bg-asm-gold mb-8"></div>
+                
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Depuis notre création, nous nous engageons quotidiennement auprès des plus démunis au cœur de Paris. Notre mission ne se limite pas à l'aide matérielle ; elle vise à restaurer la dignité humaine par une présence fraternelle et constante.
+                </p>
+
+                <div class="space-y-6 mb-10">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-asm-bordeaux text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-asm-dark mb-1">Maraudes Fraternelles</h3>
+                            <p class="text-gray-500 text-sm">Rencontre directe dans la rue pour rompre l'isolement social.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-asm-gold text-asm-dark rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-asm-dark mb-1">Aide Alimentaire</h3>
+                            <p class="text-gray-500 text-sm">Distribution de repas chauds et produits de première nécessité.</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Aide Hebdomadaire</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Distribution de repas chauds, de vêtements adaptés aux saisons, et de produits d'hygiène de première nécessité.</p>
+
+                <a href="{{ url_for('projets') }}" class="inline-flex items-center gap-3 text-asm-bordeaux font-bold group">
+                    Découvrir toutes nos actions 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </a>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-right" style="transition-delay: 200ms;">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-home"></i>
+            <!-- Right Column: Floating Image Slider -->
+            <div class="relative reveal-right h-[500px] md:h-[600px]">
+                <!-- Decorative background elements -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-asm-gold/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-asm-bordeaux/10 rounded-full blur-3xl"></div>
+                
+                <!-- Main Slider Container -->
+                <div class="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white group" 
+                     x-data="{ 
+                        active: 0, 
+                        images: [
+                            '{{ url_for('static', filename='images/action-1.jpg') }}',
+                            '{{ url_for('static', filename='images/action-2.jpg') }}',
+                            '{{ url_for('static', filename='images/action-3.jpg') }}',
+                            '{{ url_for('static', filename='images/action-4.jpg') }}'
+                        ],
+                        init() {
+                            setInterval(() => {
+                                this.active = (this.active + 1) % this.images.length;
+                            }, 5000);
+                        }
+                     }">
+                    <template x-for="(img, index) in images" :key="index">
+                        <div class="absolute inset-0 transition-all duration-1000 ease-in-out"
+                             :class="active === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'">
+                            <img :src="img" class="w-full h-full object-cover animate-ken-burns" alt="Mission Saint Martin">
+                        </div>
+                    </template>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-[200px] transform hover:scale-105 transition-transform duration-500">
+                        <p class="text-asm-bordeaux font-serif font-bold text-lg mb-1">Impact Direct</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Chaque jour, nous transformons des vies grâce à votre soutien.</p>
+                    </div>
                 </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Aide au logement</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Accompagnement à l'installation quand un logement est attribué : mobilier, vaisselle, linge et nécessité.</p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-left" style="transition-delay: 300ms;">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-hand-holding-heart"></i>
-                </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Accompagnement Social</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Aide aux démarches administratives, accès aux droits, et orientation vers les structures partenaires adaptées.</p>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-fade" style="transition-delay: 400ms;">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Réinsertion</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Soutien au retour à l'emploi et à la formation pour construire un projet de vie stable et durable.</p>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group reveal-right" style="transition-delay: 500ms;">
-                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
-                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Santé & Bien-être</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-4">Orientation vers les soins médicaux et soutien psychologique pour prendre soin de soi et de sa santé.</p>
             </div>
         </div>
     </div>
@@ -156,37 +171,50 @@
         </div>
 
         <!-- Masonry Grid -->
-        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
             
-            <!-- Video 1 -->
-            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative reveal-fade">
-                <video class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()">
-                    <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                <div class="absolute bottom-4 left-4 bg-asm-bordeaux/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
-                    <i class="fas fa-play text-[8px]"></i> Vidéo
+            <!-- Video 1 (Redesigned like Projects Page) -->
+            <div class="break-inside-avoid overflow-hidden rounded-3xl shadow-xl border-4 border-white group relative reveal-fade">
+                <div class="aspect-video relative overflow-hidden">
+                    <video id="video-1" class="w-full h-full object-cover" loop muted playsinline>
+                        <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
+                    </video>
+                    <!-- Play Overlay -->
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center" 
+                         onclick="const v = document.getElementById('video-1'); if(v.paused){v.play();}else{v.pause();}">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-white text-xl ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white">
+                    <span class="text-asm-gold text-xs font-bold uppercase tracking-widest">Terrain</span>
+                    <h3 class="text-xl font-serif font-bold text-asm-dark mt-1">Au plus proche des rues</h3>
                 </div>
             </div>
 
             <!-- Image 1 -->
-            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade" style="transition-delay: 100ms;">
-                <img src="{{ url_for('static', filename='images/action-1.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            <div class="break-inside-avoid overflow-hidden rounded-3xl shadow-xl border-4 border-white group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-1.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action Saint Martin">
             </div>
 
-            <!-- Image 2 -->
-            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade" style="transition-delay: 200ms;">
-                <img src="{{ url_for('static', filename='images/action-2.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
-            </div>
-
-            <!-- Video 2 -->
-            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative reveal-fade" style="transition-delay: 300ms;">
-                <video class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()">
-                    <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
-                </video>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                <div class="absolute bottom-4 left-4 bg-asm-bordeaux/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
-                    <i class="fas fa-play text-[8px]"></i> Vidéo
+            <!-- Video 2 (Redesigned like Projects Page) -->
+            <div class="break-inside-avoid overflow-hidden rounded-3xl shadow-xl border-4 border-white group relative reveal-fade">
+                <div class="aspect-video relative overflow-hidden">
+                    <video id="video-2" class="w-full h-full object-cover" loop muted playsinline>
+                        <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
+                    </video>
+                    <!-- Play Overlay -->
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500 flex items-center justify-center"
+                         onclick="const v = document.getElementById('video-2'); if(v.paused){v.play();}else{v.pause();}">
+                        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-white text-xl ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white">
+                    <span class="text-asm-gold text-xs font-bold uppercase tracking-widest">Maraude</span>
+                    <h3 class="text-xl font-serif font-bold text-asm-dark mt-1">Échanges et sourires</h3>
                 </div>
             </div>
 
