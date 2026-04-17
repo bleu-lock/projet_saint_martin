@@ -63,7 +63,7 @@
                     <h3 class="text-2xl font-serif font-bold text-asm-dark mb-2">Envoyez-nous un message</h3>
                     <p class="text-gray-500 mb-8">Votre demande sera traitée personnellement par notre équipe sous 48 heures.</p>
                     
-                    <form action="{{ url_for('contact') }}" method="POST" class="space-y-6">
+                    <form id="contactForm" action="{{ url_for('contact') }}" method="POST" class="space-y-6">
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -86,10 +86,27 @@
                             <textarea id="message" name="message" rows="6" required placeholder="Comment pouvons-nous vous aider ?" class="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-asm-bordeaux focus:border-asm-bordeaux transition-colors shadow-sm outline-none border bg-gray-50 focus:bg-white focus:ring-2 resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full sm:w-auto px-8 bg-asm-bordeaux text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-3">
-                            Envoyer le message <i class="fas fa-paper-plane"></i>
+                        <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 bg-asm-bordeaux text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-3">
+                            <span id="btnText">Envoyer le message</span>
+                            <div id="btnLoader" class="hidden animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                            <i id="btnIcon" class="fas fa-paper-plane"></i>
                         </button>
                     </form>
+
+                    <script>
+                        document.getElementById('contactForm').onsubmit = function() {
+                            const btn = document.getElementById('submitBtn');
+                            const text = document.getElementById('btnText');
+                            const loader = document.getElementById('btnLoader');
+                            const icon = document.getElementById('btnIcon');
+                            
+                            btn.disabled = true;
+                            btn.classList.add('opacity-80', 'cursor-not-allowed');
+                            text.innerText = "Envoi en cours...";
+                            loader.classList.remove('hidden');
+                            icon.classList.add('hidden');
+                        };
+                    </script>
                 </div>
             </div>
 

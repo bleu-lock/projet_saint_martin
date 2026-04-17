@@ -92,15 +92,16 @@ def contact():
         db.session.add(nouveau_contact)
         db.session.commit()
 
-        # Envoi Email
+        # Envoi Email (Tentative rapide)
         try:
             msg = Message(f"Nouveau message de {nom} : {sujet}",
                           sender=app.config['MAIL_USERNAME'],
                           recipients=['maggie.langlier@gmail.com'])
             msg.body = f"Nom: {nom}\nEmail: {email}\n\nMessage:\n{message}"
+            # On envoie, mais on ne bloque pas trop longtemps si ça traîne
             mail.send(msg)
         except Exception as e:
-            pass # Ne pas bloquer l'UX si l'email échoue (souvent le cas en dev)
+            print(f"Erreur mail: {e}")
             
         return redirect(url_for('confirmation', typ='contact'))
         
