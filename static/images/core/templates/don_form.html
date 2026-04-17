@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Faire un don</title>
+    <script>
+        function toggleFields() {
+            const checkbox = document.getElementById("id_anonyme");
+            const nomField = document.getElementById("nom_field");
+            const prenomField = document.getElementById("prenom_field");
+
+            if (checkbox.checked) {
+                nomField.style.display = "none";
+                prenomField.style.display = "none";
+            } else {
+                nomField.style.display = "block";
+                prenomField.style.display = "block";
+            }
+        }
+
+        window.onload = function() {
+            toggleFields();
+            document.getElementById("id_anonyme").addEventListener("change", toggleFields);
+        }
+    </script>
+</head>
+<body>
+    <h2>Faire un don</h2>
+
+    <!-- Formulaire Django -->
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            {{ form.montant.label_tag }} {{ form.montant }} €
+        </p>
+        <p>
+            {{ form.anonyme.label_tag }} {{ form.anonyme }}
+        </p>
+        <p id="nom_field">
+            {{ form.nom.label_tag }} {{ form.nom }}
+        </p>
+        <p id="prenom_field">
+            {{ form.prenom.label_tag }} {{ form.prenom }}
+        </p>
+        <button type="submit">Valider</button>
+    </form>
+
+    <hr>
+
+    <!-- Lien PayPal.me -->
+    <h3>Payer via PayPal</h3>
+    <p>
+       
+    </p>
+</body>
+</html>
