@@ -38,8 +38,11 @@
             
             <header class="bg-white shadow-sm px-4 md:px-8 py-4 flex justify-between items-center sticky top-0 z-10">
                 <h1 class="text-xl md:text-2xl font-bold text-[#8B1A1A]">Tableau de bord</h1>
-                <div class="flex items-center gap-4">
-                    <a href="{{ url_for('index') }}" target="_blank" class="text-xs md:text-sm text-blue-600 hover:underline flex items-center gap-1">Voir le site <i class="fas fa-external-link-alt text-xs"></i></a>
+                <div class="flex items-center gap-3 md:gap-4">
+                    <a href="{{ url_for('index') }}" target="_blank" class="hidden sm:flex text-xs md:text-sm text-blue-600 hover:underline items-center gap-1">Voir le site <i class="fas fa-external-link-alt text-xs"></i></a>
+                    <a href="{{ url_for('admin_logout') }}" class="bg-red-50 text-red-600 px-3 py-1.5 rounded-lg text-xs md:text-sm font-bold hover:bg-red-600 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fas fa-sign-out-alt"></i> <span class="hidden xs:inline">Déconnexion</span>
+                    </a>
                 </div>
             </header>
 
@@ -86,7 +89,7 @@
                                         </td>
                                     </tr>
                                     {% else %}
-                                    <tr><td colspan="5" class="px-6 py-8 text-center text-gray-400">Aucun bénévole inscrit pour le moment.</td></tr>
+                                    <tr><td colspan="6" class="px-6 py-12 text-center text-gray-400 italic">Aucun bénévole inscrit pour le moment.</td></tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
@@ -131,7 +134,7 @@
                                         </td>
                                     </tr>
                                     {% else %}
-                                    <tr><td colspan="4" class="px-6 py-8 text-center text-gray-400">Aucun message reçu.</td></tr>
+                                    <tr><td colspan="5" class="px-6 py-12 text-center text-gray-400 italic">Aucun message reçu.</td></tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
