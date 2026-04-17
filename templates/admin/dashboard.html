@@ -55,6 +55,7 @@
                     </div>
                     
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        {% if benevoles %}
                         <div class="overflow-x-auto overflow-y-hidden">
                             <table class="w-full text-left text-sm text-gray-600 min-w-[800px] md:min-w-full">
                                 <thead class="bg-gray-50 font-bold text-gray-700 border-b border-gray-200">
@@ -88,12 +89,16 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    {% else %}
-                                    <tr><td colspan="6" class="px-6 py-12 text-center text-gray-400 italic">Aucun bénévole inscrit pour le moment.</td></tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
+                        {% else %}
+                        <div class="py-20 text-center">
+                            <i class="fas fa-users-slash text-4xl text-gray-200 mb-4 block"></i>
+                            <p class="text-gray-400 italic">Aucun bénévole inscrit pour le moment.</p>
+                        </div>
+                        {% endif %}
                     </div>
                 </section>
 
@@ -102,6 +107,7 @@
                     <h2 class="text-lg md:text-xl font-bold text-gray-800 border-l-4 border-[#8B1A1A] pl-3 mb-6">Messages Reçus ({{ contacts|length }})</h2>
                     
                     <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        {% if contacts %}
                         <div class="overflow-x-auto overflow-y-hidden">
                             <table class="w-full text-left text-sm text-gray-600 min-w-[700px] md:min-w-full">
                                 <thead class="bg-gray-50 font-bold text-gray-700 border-b border-gray-200">
@@ -133,12 +139,16 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    {% else %}
-                                    <tr><td colspan="5" class="px-6 py-12 text-center text-gray-400 italic">Aucun message reçu.</td></tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
+                        {% else %}
+                        <div class="py-20 text-center">
+                            <i class="fas fa-comment-slash text-4xl text-gray-200 mb-4 block"></i>
+                            <p class="text-gray-400 italic">Aucun message reçu pour le moment.</p>
+                        </div>
+                        {% endif %}
                     </div>
                 </section>
 
