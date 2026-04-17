@@ -1,0 +1,71 @@
+<!-- Masonry Photo Gallery (Animated Marquee) -->
+<section class="py-24 bg-asm-dark overflow-hidden">
+    <div class="text-center mb-16 fade-in-section">
+        <h2 class="text-4xl font-serif font-bold text-white mb-4">Le Terrain en Images</h2>
+        <p class="text-gray-400">Quelques instants capturés lors de nos interventions.</p>
+    </div>
+
+    <style>
+    /* Infinite scrolling marquee */
+    .marquee-container {
+        display: flex;
+        width: 200%;
+        animation: marquee 40s linear infinite;
+    }
+    .marquee-container:hover {
+        animation-play-state: paused;
+    }
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    </style>
+
+    <div class="relative w-full overflow-hidden flex pb-12">
+        <div class="marquee-container gap-6">
+            <!-- First Set -->
+            <div class="flex gap-6 w-1/2 px-3">
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 1">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 2">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 3">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 4">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-49-15.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 5">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 4.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 6">
+                </div>
+            </div>
+            
+            <!-- Second Set (Duplicate for seamless loop) -->
+            <div class="flex gap-6 w-1/2 px-3">
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 1">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 2">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 3">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 4">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-49-15.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 5">
+                </div>
+                <div class="w-72 h-96 flex-shrink-0 group transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:z-10 ring-4 ring-transparent hover:ring-asm-gold/50 rounded-xl overflow-hidden cursor-pointer">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 4.jpg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Galerie 6">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,90 @@
+<!-- Featured Projects (Cards) -->
+<section class="py-16 bg-white shrink-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Project 1: HERO Cinematic Documentary -->
+        <div class="w-full mb-12 fade-in-section">
+            <div class="bg-gradient-to-br from-[#4A0E0E] to-black rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row group cursor-pointer relative" onclick="window.open('{{ url_for('static', filename='images/VIDEO-2026-03-19-14-09-08.mp4') }}', '_blank')">
+                <div class="relative w-full md:w-3/5 h-80 md:h-[500px] bg-black overflow-hidden order-1 md:order-2">
+                    <!-- Texture Grain Cinéma -->
+                    <div class="film-grain z-10"></div>
+                    
+                    <!-- Badge Durée -->
+                    <div class="absolute top-6 right-6 z-20 bg-black/80 backdrop-blur-sm text-white px-3 py-1 rounded-md text-sm font-bold border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                        01:14
+                    </div>
+                    
+                    <!-- Video/Thumbnail -->
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 2.jpg') }}" alt="Reportage Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000">
+                    
+                    <!-- Central Play Button Animated -->
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-24 h-24 bg-gradient-to-tr from-asm-gold to-[#e8cd8b] rounded-full flex items-center justify-center play-btn-pulse shadow-[0_0_30px_#C9A84C] group-hover:brightness-125 transition-all">
+                            <i class="fas fa-play text-white text-4xl ml-2 drop-shadow-md"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress bar decor -->
+                    <div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20 z-20">
+                        <div class="progress-bar-anim"></div>
+                    </div>
+                </div>
+                
+                <!-- Text Content -->
+                <div class="p-10 md:p-16 flex-grow flex flex-col justify-center w-full md:w-2/5 order-2 md:order-1 relative z-20 bg-gradient-to-r from-black to-transparent">
+                    <div class="flex items-center gap-2 text-asm-gold font-bold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-600 rec-blink shadow-[0_0_8px_red]"></div>
+                        REGARDER LE DOCUMENTAIRE
+                    </div>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                        Reportage Documentaire
+                    </h3>
+                    <p class="text-gray-300 text-base md:text-lg opacity-90 leading-relaxed font-light">
+                        Un regard intime et bouleversant sur nos maraudes nocturnes. Ce projet documentaire en immersion met en lumière la dure réalité du terrain parisien et la force inébranlable des liens qui se tissent au fil des rencontres humaines.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub Projects: Grid 2 Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <!-- Project 2: Concert -->
+            <div class="bg-asm-offwhite rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col fade-in-section" style="transition-delay: 100ms;">
+                <div class="relative w-full h-72 overflow-hidden group">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-37-00.jpg') }}" alt="Concert solidaire" class="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur text-asm-bordeaux px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                        En cours
+                    </div>
+                </div>
+                <div class="p-8 flex-grow flex flex-col">
+                    <span class="text-asm-gold font-bold text-xs uppercase tracking-widest mb-2">Événement</span>
+                    <h3 class="text-2xl font-serif font-bold text-asm-dark mb-4">Concert Solidaire 2024</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">Organisation du grand concert annuel à l'Église de Grenelle pour récolter des fonds vitaux pour les personnes dans le besoin. Une soirée de prière solennelle et de musique classique.</p>
+                    <a href="#" class="text-asm-bordeaux font-bold hover:text-red-700 transition-colors uppercase text-sm group flex items-center w-max">
+                        Voir l'événement <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: Distribution Noel -->
+            <div class="bg-asm-offwhite rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col fade-in-section" style="transition-delay: 200ms;">
+                <div class="relative w-full h-72 overflow-hidden group">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" alt="Tournée de Noël" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-4 right-4 bg-green-100/90 backdrop-blur text-green-700 px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                        Succès accompli
+                    </div>
+                </div>
+                <div class="p-8 flex-grow flex flex-col">
+                    <span class="text-asm-gold font-bold text-xs uppercase tracking-widest mb-2">Action Saisonnière</span>
+                    <h3 class="text-2xl font-serif font-bold text-asm-dark mb-4">Grande Tournée de Noël</h3>
+                    <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">Distribution record de plus de 500 colis festifs aux sans-abris de la capitale durant la nuit du réveillon. Apporter de la chaleur, des repas chauds et de l'espoir durant les fêtes de fin d'année.</p>
+                    <a href="#" class="text-asm-bordeaux font-bold hover:text-red-700 transition-colors uppercase text-sm group flex items-center w-max">
+                        Lire le bilan complet <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

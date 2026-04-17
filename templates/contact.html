@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - Association Saint Martin{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-asm-offwhite min-h-[80vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 fade-in-section">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-asm-bordeaux mb-6">Contactez-nous</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+                Une question sur nos actions, une demande de partenariat ou besoin d'aide ? Nos portes (et nos lignes) vous sont toujours ouvertes.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+            
+            <!-- Contact Info -->
+            <div class="md:col-span-2 space-y-8 fade-in-section" style="transition-delay: 100ms;">
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 flex flex-col h-full relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-5">
+                        <i class="fas fa-heart text-[200px] text-asm-bordeaux"></i>
+                    </div>
+
+                    <span class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2">Direction des opérations</span>
+                    <h3 class="text-3xl font-serif font-bold text-asm-dark mb-1">Marguerite Marie Langlier</h3>
+                    <p class="text-asm-gold font-medium mb-8">Fondatrice & Coordinatrice</p>
+                    
+                    <div class="space-y-6 flex-grow relative z-10">
+                        <a href="mailto:maggie.langlier@gmail.com" class="flex items-center gap-4 text-gray-600 hover:text-asm-bordeaux transition-colors group">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-asm-bordeaux group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="font-medium">maggie.langlier@gmail.com</span>
+                        </a>
+                        
+                        <a href="tel:+33613851679" class="flex items-center gap-4 text-gray-600 hover:text-asm-bordeaux transition-colors group">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-asm-bordeaux group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="font-medium">+33 6 13 85 16 79 <span class="text-xs text-gray-400 ml-2">(WhatsApp dispo)</span></span>
+                        </a>
+
+                        <div class="flex items-center gap-4 text-gray-600">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-asm-bordeaux">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="font-medium">Basé à Paris, France</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-gray-100 relative z-10">
+                        <p class="text-gray-500 italic text-sm">
+                            "Nous croyons que chaque véritable changement commence par une simple conversation."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="md:col-span-3 fade-in-section" style="transition-delay: 200ms;">
+                <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-gray-100">
+                    <h3 class="text-2xl font-serif font-bold text-asm-dark mb-2">Envoyez-nous un message</h3>
+                    <p class="text-gray-500 mb-8">Votre demande sera traitée personnellement par notre équipe sous 48 heures.</p>
+                    
+                    <form action="{{ url_for('contact') }}" method="POST" class="space-y-6">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nom" class="block text-sm font-bold text-gray-700 mb-2">Nom complet *</label>
+                                <input type="text" id="nom" name="nom" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-asm-bordeaux focus:border-asm-bordeaux transition-colors shadow-sm outline-none border bg-gray-50 focus:bg-white focus:ring-2">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-asm-bordeaux focus:border-asm-bordeaux transition-colors shadow-sm outline-none border bg-gray-50 focus:bg-white focus:ring-2">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="sujet" class="block text-sm font-bold text-gray-700 mb-2">Sujet de votre message</label>
+                            <input type="text" id="sujet" name="sujet" class="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-asm-bordeaux focus:border-asm-bordeaux transition-colors shadow-sm outline-none border bg-gray-50 focus:bg-white focus:ring-2">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-bold text-gray-700 mb-2">Votre message *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Comment pouvons-nous vous aider ?" class="w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-asm-bordeaux focus:border-asm-bordeaux transition-colors shadow-sm outline-none border bg-gray-50 focus:bg-white focus:ring-2 resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full sm:w-auto px-8 bg-asm-bordeaux text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-3">
+                            Envoyer le message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

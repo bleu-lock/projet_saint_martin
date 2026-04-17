@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+
+{% block title %}Accueil - Association Saint Martin{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <!-- Background Image Slideshow with Parallax effect via Alpine.js -->
+    <div class="absolute inset-0 z-0 bg-black" 
+         x-data="{ 
+            activeSlide: 0, 
+            slides: [
+                '{{ url_for('static', filename='images/PHOTO-2026-03-19-13-40-38.jpg') }}',
+                '{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 2.jpg') }}',
+                '{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}',
+                '{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-57.jpg') }}'
+            ],
+            init() {
+                setInterval(() => {
+                    this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
+                }, 5000);
+            }
+         }">
+        <template x-for="(slide, index) in slides" :key="index">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out transform scale-105"
+                 :class="activeSlide === index ? 'opacity-100' : 'opacity-0'"
+                 :style="`background-image: url('${slide}'); filter: brightness(0.4);`">
+            </div>
+        </template>
+    </div>
+    
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-16">
+        <span class="inline-block py-1 px-4 border border-asm-gold text-asm-gold rounded-full text-xs font-bold tracking-widest uppercase mb-6 slide-up-anim" style="animation-delay: 0.1s;">
+            Action Humanitaire
+        </span>
+        <h1 class="text-5xl md:text-7xl font-serif text-white font-bold leading-tight mb-6 max-w-4xl mx-auto slide-up-anim" style="animation-delay: 0.3s; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+            Ensemble dans la rue,<br><span class="text-asm-gold italic">pour redonner espoir</span>
+        </h1>
+        <p class="text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light slide-up-anim" style="animation-delay: 0.5s;">
+            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignité et chaleur humaine au cœur de la ville.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center slide-up-anim" style="animation-delay: 0.7s;">
+            <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-8 py-4 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2">
+                Faire un don <i class="fas fa-heart text-sm"></i>
+            </a>
+            <a href="{{ url_for('benevole') }}" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-asm-dark transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                Nous rejoindre <i class="fas fa-hands-helping text-sm"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 animate-bounce">
+        <span class="text-xs tracking-widest uppercase font-semibold">Découvrir</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white relative z-20 shadow-xl -mt-8 mx-4 sm:mx-8 lg:mx-auto max-w-6xl rounded-2xl border border-gray-100">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
+        <div class="px-4">
+            <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="100">0</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Personnes aidées / an</span>
+        </div>
+        <div class="px-4">
+            <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="70">0</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Bénévoles engagés</span>
+        </div>
+        <div class="px-4">
+            <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="4">0</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Projets actifs</span>
+        </div>
+        <div class="px-4">
+            <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="5">0</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Années d'existence</span>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="py-24 bg-asm-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 fade-in-section">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-asm-dark mb-4">Notre Mission au Quotidien</h2>
+            <div class="w-24 h-1 bg-asm-gold mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nous intervenons sur plusieurs fronts pour offrir un accompagnement complet et respectueux de la dignité humaine.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-walking"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Soutien moral & Maraudes</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Présence humaine auprès des personnes isolées. Rencontre nocturne avec les sans-abris pour rompre l'isolement.</p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section" style="transition-delay: 100ms;">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Aide Hebdomadaire</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Distribution de repas chauds, de vêtements adaptés aux saisons, et de produits d'hygiène de première nécessité.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section" style="transition-delay: 200ms;">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Aide au logement</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Accompagnement à l'installation quand un logement est attribué : mobilier, vaisselle, linge et nécessité.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section" style="transition-delay: 300ms;">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-file-signature"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Démarches Admin</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Aide à la régularisation et accompagnement complet pour l'accès aux droits des personnes sans-papiers.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section" style="transition-delay: 400ms;">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-dove"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Soutien Funéraire</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Prise en charge funéraire, organisation d'obsèques dignes, recherche et contact rapproché des familles.</p>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-2 group fade-in-section" style="transition-delay: 500ms;">
+                <div class="w-16 h-16 bg-red-50 text-asm-bordeaux rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-asm-bordeaux group-hover:text-white transition-colors">
+                    <i class="fas fa-plane-departure"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-asm-dark mb-3">Retour au pays</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Aide au retour dans le pays d'origine : démarches administratives, financement du billet et accompagnement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials / Stories Section -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative background -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-asm-gold/5 rounded-full blur-3xl z-0"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-asm-bordeaux/5 rounded-full blur-3xl z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            
+            <!-- Left side: Stories text -->
+            <div class="lg:w-1/2 fade-in-section">
+                <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-2 block">Ils témoignent</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-asm-dark mb-8">Paroles d'Espoir</h2>
+                
+                <div class="space-y-8">
+                    <!-- Story 1 -->
+                    <div class="bg-asm-offwhite p-6 rounded-2xl shadow-sm border-l-4 border-asm-bordeaux relative">
+                        <i class="fas fa-quote-left absolute top-4 right-6 text-4xl text-gray-200 opacity-50"></i>
+                        <p class="text-gray-700 italic mb-4 relative z-10 leading-relaxed">
+                            "Rencontré lors d'une maraude, Ananth a été accompagné dans toutes ses démarches pour rentrer chez lui au Sri Lanka. L'association garde toujours contact avec lui aujourd'hui."
+                        </p>
+                        <div class="flex items-center gap-4 mt-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 overflow-hidden">
+                                <img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55.jpg') }}" alt="Ananth" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-asm-dark">Ananth</h4>
+                                <span class="text-xs text-gray-500 uppercase tracking-wide">Bénéficiaire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 2 -->
+                    <div class="bg-asm-offwhite p-6 rounded-2xl shadow-sm border-l-4 border-asm-gold relative ml-0 lg:ml-12">
+                        <i class="fas fa-quote-left absolute top-4 right-6 text-4xl text-gray-200 opacity-50"></i>
+                        <p class="text-gray-700 italic mb-4 relative z-10 leading-relaxed">
+                            "Ion avait été attiré en France avec la promesse d'un emploi à 3 000€/mois. Ses documents lui avaient été volés. L'association lui a refait ses papiers, payé son billet de bus et l'a accompagné jusqu'à son départ pour la Roumanie."
+                        </p>
+                        <div class="flex items-center gap-4 mt-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 overflow-hidden">
+                                <img src="{{ url_for('static', filename='images/PHOTO-2023-12-15-23-25-39.jpg') }}" alt="Ion" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-asm-dark">Ion</h4>
+                                <span class="text-xs text-gray-500 uppercase tracking-wide">Bénéficiaire aidé</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side: Image Collage -->
+            <div class="lg:w-1/2 relative min-h-[500px] w-full mt-12 lg:mt-0 fade-in-section">
+                <!-- Image 1 -->
+                <div class="absolute top-0 right-0 w-3/4 h-80 rounded-3xl overflow-hidden shadow-2xl z-10 transform translate-x-4 -translate-y-4 border-4 border-white">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 2.jpg') }}" alt="Action humanitaire" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <!-- Image 2 -->
+                <div class="absolute bottom-0 left-0 w-2/3 h-72 rounded-3xl overflow-hidden shadow-2xl z-20 transform -translate-x-4 translate-y-8 border-4 border-white">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-23.jpg') }}" alt="Maraude de nuit" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <!-- Impact badge -->
+                <div class="absolute bottom-16 right-8 bg-asm-gold text-asm-dark p-6 rounded-2xl shadow-xl z-30 transform rotate-3 fade-in-section" style="transition-delay: 300ms;">
+                    <div class="text-4xl font-black mb-1">98%</div>
+                    <div class="text-xs font-bold uppercase tracking-wider">Des dons vont<br>au terrain</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-24 bg-asm-dark relative">
+    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('{{ url_for('static', filename='images/PHOTO-2023-11-24-16-27-55.jpg') }}');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-asm-dark to-transparent z-0"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 fade-in-section">
+        <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Chaque geste compte.</h2>
+        <p class="text-xl text-gray-300 mb-10 font-light">
+            Rejoignez une communauté bienveillante. Que ce soit en donnant de votre temps ou financièrement, vous avez le pouvoir de changer des vies.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="{{ url_for('don') }}" class="bg-asm-gold text-asm-dark px-8 py-3 rounded-full font-bold shadow-lg hover:bg-yellow-500 transition-all transform hover:-translate-y-1">
+                Soutenir nos actions
+            </a>
+            <a href="{{ url_for('benevole') }}" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-asm-dark transition-all transform hover:-translate-y-1">
+                Devenir Bénévole
+            </a>
+            <a href="{{ url_for('contact') }}" class="border-2 border-transparent bg-white/10 backdrop-blur-sm text-white px-8 py-3 rounded-full font-bold hover:bg-white/20 transition-all transform hover:-translate-y-1">
+                Devenir Partenaire
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,131 @@
+/* Animations d'entrée (Fade in et Slide up) */
+.fade-in-section, .slide-up-anim {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, visibility;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-up-anim {
+    transform: translateY(30px);
+}
+
+.fade-in-section.is-visible, .slide-up-anim.is-visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+}
+
+/* Base custom styles */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar pour un look premium */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #FAF7F2; 
+}
+::-webkit-scrollbar-thumb {
+    background: #C9A84C; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8B1A1A; 
+}
+
+/* Animations flash messages */
+.opacity-anim {
+    animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+/* Helper pour Masonry sur Webkit/Firefox */
+@media (min-width: 640px) {
+    .columns-2 {
+        column-count: 2;
+    }
+}
+@media (min-width: 1024px) {
+    .columns-3 {
+        column-count: 3;
+    }
+}
+.break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+
+/* Custom Range Slider */
+input[type=range].custom-slider {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range].custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #8B1A1A;
+  cursor: pointer;
+  margin-top: -9px;
+  box-shadow: 0 0 0 4px #F9FAFB, 0 0 0 6px #8B1A1A;
+}
+input[type=range].custom-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #E5E7EB;
+  border-radius: 10px;
+  border: 1px solid #D1D5DB;
+}
+
+
+/* ============================
+   RESPONSIVE MOBILE FIXES
+   ============================ */
+
+/* Hero section text scaling */
+@media (max-width: 640px) {
+    /* Navbar */
+    .marquee-container {
+        animation-duration: 25s;  /* Faster on small screens */
+    }
+
+    /* Cinema hero : stack properly */
+    .film-grain { display: none; } /* perf on mobile */
+
+    /* Ensure no horizontal overflow from marquee */
+    .marquee-container > div {
+        min-width: max-content;
+    }
+
+    /* WhatsApp button - keep visible but smaller */
+    #scroll-top-btn {
+        right: 1rem;
+        bottom: 5.5rem;
+        padding: 0.6rem;
+    }
+}
+
+/* Ensure images never overflow */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
