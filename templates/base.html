@@ -50,9 +50,34 @@
                 <div class="flex items-center">
                     <a href="{{ url_for('index') }}" class="flex items-center gap-3 group py-1">
                         <img class="h-14 md:h-16 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out animate-float-infinite" src="{{ url_for('static', filename='images/logo-saint martin.jpeg') }}" alt="Logo Association Saint Martin">
-                        <span class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 animate-fade-in-right">Association Saint Martin</span>
+                        <span id="typewriter-text" class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300"></span>
+                        <span class="w-1 h-6 bg-asm-gold animate-pulse ml-1"></span>
                     </a>
                 </div>
+
+                <script>
+                    const text = "Association Saint Martin";
+                    const target = document.getElementById('typewriter-text');
+                    let i = 0;
+                    let isDeleting = false;
+                    
+                    function type() {
+                        const current = text.substring(0, i);
+                        target.innerText = current;
+                        
+                        if (!isDeleting && i < text.length) {
+                            i++;
+                            setTimeout(type, 150);
+                        } else if (isDeleting && i > 0) {
+                            i--;
+                            setTimeout(type, 100);
+                        } else {
+                            isDeleting = !isDeleting;
+                            setTimeout(type, 1500);
+                        }
+                    }
+                    window.addEventListener('DOMContentLoaded', type);
+                </script>
 
                 <style>
                     @keyframes floatInfinite {

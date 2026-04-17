@@ -145,11 +145,24 @@
                         
                         <!-- Documentary Overlay -->
                         <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all flex items-center justify-center cursor-pointer"
-                             @click="const v = document.getElementById('docu-vid-' + currentVid); v.paused ? v.play() : v.pause()">
-                            <div class="w-20 h-20 bg-asm-bordeaux/90 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-inner transform group-hover:scale-110 transition-transform">
+                             @click="const v = document.getElementById('docu-vid-' + currentVid); if(v.paused){v.play();}else{v.pause();}">
+                            <div class="w-20 h-20 bg-asm-bordeaux/90 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-inner transform group-hover:scale-110 transition-transform"
+                                 x-show="document.getElementById('docu-vid-' + currentVid)?.paused !== false">
                                 <i class="fas fa-play text-2xl ml-1"></i>
                             </div>
                         </div>
+
+                        <!-- Script to handle button visibility on actual play/pause -->
+                        <script>
+                            document.querySelectorAll('video').forEach(v => {
+                                v.addEventListener('play', (e) => {
+                                    e.target.nextElementSibling.firstElementChild.style.display = 'none';
+                                });
+                                v.addEventListener('pause', (e) => {
+                                    e.target.nextElementSibling.firstElementChild.style.display = 'flex';
+                                });
+                            });
+                        </script>
                         
                         <!-- Caption Bar -->
                         <div class="absolute bottom-0 inset-x-0 bg-asm-bordeaux/90 backdrop-blur-md text-white py-3 px-6 flex justify-between items-center">
@@ -188,11 +201,33 @@
 
         <!-- Masonry Grid with all remaining photos -->
         <div class="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
-            <template x-for="i in [5,6,7,8,9,10,11,12,13]" :key="i">
-                <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
-                    <img :src="`{{ url_for('static', filename='images/action-') }}${i}.jpg`" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
-                </div>
-            </template>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-5.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-6.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-7.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-8.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-9.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-10.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-11.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-12.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-13.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-1000" alt="Action">
+            </div>
         </div>
     </div>
 </section>
