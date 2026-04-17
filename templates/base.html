@@ -81,6 +81,27 @@
                         animation: fadeInRight 1s ease-out forwards;
                     }
                     
+                    /* Scroll Reveal Classes */
+                    .reveal-fade {
+                        opacity: 0;
+                        transform: translateY(30px);
+                        transition: all 0.8s ease-out;
+                    }
+                    .reveal-left {
+                        opacity: 0;
+                        transform: translateX(-50px);
+                        transition: all 0.8s ease-out;
+                    }
+                    .reveal-right {
+                        opacity: 0;
+                        transform: translateX(50px);
+                        transition: all 0.8s ease-out;
+                    }
+                    .reveal-fade.active, .reveal-left.active, .reveal-right.active {
+                        opacity: 1;
+                        transform: translate(0);
+                    }
+                    
                     /* Effet de brillance subtil au survol du groupe */
                     .group:hover .font-serif {
                         text-shadow: 0 0 1px rgba(139, 26, 26, 0.2);
@@ -288,5 +309,23 @@
 
     <!-- Custom Scripts -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+    // Scroll Reveal Animation Script
+    const revealCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    };
+
+    const revealObserver = new IntersectionObserver(revealCallback, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.reveal-fade, .reveal-left, .reveal-right').forEach(el => {
+        revealObserver.observe(el);
+    });
+    </script>
 </body>
 </html>

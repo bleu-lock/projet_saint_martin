@@ -145,4 +145,89 @@
     </div>
 </section>
 
+<!-- Impact Gallery Section -->
+<section class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal-fade">
+            <span class="text-asm-gold font-bold tracking-widest uppercase text-sm">Notre Impact en Images</span>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-asm-dark mt-4 mb-6">La Vie de l'Association</h2>
+            <div class="w-24 h-1 bg-asm-gold mx-auto mb-8"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto font-light italic">"Une image vaut mille mots, une action vaut mille promesses."</p>
+        </div>
+
+        <!-- Masonry Grid -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            
+            <!-- Video 1 -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative reveal-fade">
+                <video class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()">
+                    <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                <div class="absolute bottom-4 left-4 bg-asm-bordeaux/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
+                    <i class="fas fa-play text-[8px]"></i> Vidéo
+                </div>
+            </div>
+
+            <!-- Image 1 -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade" style="transition-delay: 100ms;">
+                <img src="{{ url_for('static', filename='images/action-1.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+
+            <!-- Image 2 -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade" style="transition-delay: 200ms;">
+                <img src="{{ url_for('static', filename='images/action-2.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+
+            <!-- Video 2 -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative reveal-fade" style="transition-delay: 300ms;">
+                <video class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" loop muted playsinline onmouseover="this.play()" onmouseout="this.pause()">
+                    <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                <div class="absolute bottom-4 left-4 bg-asm-bordeaux/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
+                    <i class="fas fa-play text-[8px]"></i> Vidéo
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-3.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+
+            <!-- More Images -->
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-4.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-5.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-6.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-7.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-8.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-9.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-10.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-11.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-12.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+            <div class="break-inside-avoid overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group reveal-fade">
+                <img src="{{ url_for('static', filename='images/action-13.jpg') }}" class="w-full h-auto object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Action Saint Martin">
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
