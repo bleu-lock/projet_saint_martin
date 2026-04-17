@@ -60,11 +60,22 @@
                     <a href="{{ url_for('projets') }}" class="text-asm-dark hover:text-asm-bordeaux font-medium transition-colors">Projets & Actions</a>
                     <a href="{{ url_for('benevole') }}" class="text-asm-dark hover:text-asm-bordeaux font-medium transition-colors">Nous Rejoindre</a>
                     <a href="{{ url_for('contact') }}" class="text-asm-dark hover:text-asm-bordeaux font-medium transition-colors">Contact</a>
-                    <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-0.5 hover:shadow-xl">Faire un don</a>
+                    
+                    <div class="flex items-center gap-5 border-l border-asm-gold/30 pl-8">
+                        <a href="https://wa.me/33613851679" target="_blank" class="text-[#25D366] hover:scale-110 transition-transform duration-300 relative group p-1" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full animate-ping opacity-75"></span>
+                            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                        </a>
+                        <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-0.5 hover:shadow-xl">Faire un don</a>
+                    </div>
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="flex items-center md:hidden">
+                <div class="flex items-center gap-4 md:hidden">
+                    <a href="https://wa.me/33613851679" target="_blank" class="text-[#25D366] p-2">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </a>
                     <button @click="open = !open" type="button" class="text-asm-dark hover:text-asm-bordeaux focus:outline-none">
                         <svg class="h-6 w-6" x-show="!open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -114,19 +125,11 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Float WhatsApp Button -->
-    <a href="https://wa.me/33613851679" target="_blank" class="fixed right-5 z-50 flex items-center justify-center group" style="bottom: 50%; transform: translateY(50%);" aria-label="Contactez-nous sur WhatsApp">
-        <div class="bg-[#25D366] hover:bg-[#128C7E] text-white p-3 rounded-full shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center">
-            <i class="fab fa-whatsapp text-2xl"></i>
-        </div>
-        <span class="absolute right-14 bg-white text-gray-800 text-sm py-1 px-3 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Nous contacter</span>
-    </a>
-
     <!-- Scroll To Top Button -->
     <button id="scroll-top-btn"
         onclick="window.scrollTo({top:0, behavior:'smooth'})"
         aria-label="Retour en haut"
-        class="fixed right-5 bottom-24 z-50 bg-asm-bordeaux hover:bg-red-900 text-white p-2 rounded-full shadow-xl transition-all duration-500 transform hover:scale-110 opacity-0 pointer-events-none">
+        class="fixed right-5 bottom-8 z-50 bg-asm-bordeaux hover:bg-red-900 text-white p-2 rounded-full shadow-xl transition-all duration-500 transform hover:scale-110 opacity-0 pointer-events-none">
         <i class="fas fa-chevron-up text-base"></i>
     </button>
 
@@ -134,11 +137,6 @@
     #scroll-top-btn.visible {
         opacity: 1;
         pointer-events: auto;
-        animation: bob 2s ease-in-out infinite;
-    }
-    @keyframes bob {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50%       { transform: translateY(-6px) scale(1.05); }
     }
     </style>
 
@@ -154,58 +152,100 @@
     </script>
 
 
-    <!-- Footer -->
-    <footer class="bg-asm-dark text-gray-300 pt-16 pb-8 border-t-[6px] border-asm-gold">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <!-- Footer (Modern Redesign) -->
+    <footer class="bg-asm-offwhite pt-0 pb-12 overflow-hidden border-t border-gray-100">
+        <!-- Large CTA Banner -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -translate-y-12">
+            <div class="bg-gradient-to-br from-asm-bordeaux via-[#6e1414] to-asm-dark rounded-[2.5rem] p-12 md:p-20 text-center shadow-2xl relative overflow-hidden reveal-fade">
+                <!-- Decorative pattern -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs><pattern id="grid-footer" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs>
+                        <rect width="100" height="100" fill="url(#grid-footer)" />
+                    </svg>
+                </div>
                 
-                <div class="col-span-1 md:col-span-2">
-                    <span class="font-serif font-bold text-2xl text-white tracking-wide mb-6 block">Association Saint Martin</span>
-                    <p class="text-sm leading-relaxed max-w-sm mb-6 text-gray-200">
-                        Association caritative parisienne fondée en 2021. Nous œuvrons au quotidien pour apporter dignité, chaleur humaine et accompagnement à ceux qui vivent dans la rue.
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6 relative z-10 leading-tight">
+                    Prêt à transformer des vies avec nous ?
+                </h2>
+                <p class="text-gray-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light relative z-10">
+                    Chaque don, chaque heure de bénévolat est une pierre ajoutée à l'édifice de la solidarité.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
+                    <a href="{{ url_for('don') }}" class="bg-asm-gold text-asm-dark px-10 py-4 rounded-full font-bold hover:bg-yellow-600 transition-all transform hover:-translate-y-1 shadow-xl">
+                        Agir maintenant
+                    </a>
+                    <a href="{{ url_for('benevole') }}" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-asm-dark transition-all transform hover:-translate-y-1">
+                        Devenir bénévole
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                
+                <!-- Brand Column -->
+                <div class="md:col-span-4">
+                    <div class="flex items-center gap-3 mb-8">
+                        <img src="{{ url_for('static', filename='images/logo-saint martin.jpeg') }}" class="h-12 w-auto rounded-lg shadow-sm" alt="Logo">
+                        <span class="font-serif font-bold text-2xl text-asm-bordeaux tracking-tight">Saint Martin</span>
+                    </div>
+                    <p class="text-gray-500 text-base leading-relaxed max-w-xs mb-8">
+                        Action humanitaire de terrain au cœur de Paris. Restaurer la dignité par la présence et l'aide concrète.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-asm-gold hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-asm-gold hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-asm-gold hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-gray-400 hover:text-asm-gold transition-colors text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-asm-gold transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-asm-gold transition-colors text-xl"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
-                <div>
-                    <h3 class="text-white font-serif font-semibold text-lg mb-6">Liens Rapides</h3>
-                    <ul class="space-y-3 text-sm text-gray-200">
-                        <li><a href="{{ url_for('index') }}" class="hover:text-asm-gold transition-colors">Notre mission</a></li>
-                        <li><a href="{{ url_for('projets') }}" class="hover:text-asm-gold transition-colors">Nos actions</a></li>
-                        <li><a href="{{ url_for('benevole') }}" class="hover:text-asm-gold transition-colors">Devenir bénévole</a></li>
-                        <li><a href="{{ url_for('don') }}" class="hover:text-asm-gold transition-colors">Faire un don</a></li>
-                        <li><a href="{{ url_for('admin_login') }}" class="hover:text-asm-gold transition-colors">Espace membre</a></li>
+                <!-- Link Columns -->
+                <div class="md:col-span-2">
+                    <h3 class="text-asm-dark font-bold text-sm uppercase tracking-widest mb-8">Association</h3>
+                    <ul class="space-y-4 text-gray-500 text-sm">
+                        <li><a href="{{ url_for('index') }}" class="hover:text-asm-bordeaux transition-colors">Notre mission</a></li>
+                        <li><a href="{{ url_for('projets') }}" class="hover:text-asm-bordeaux transition-colors">Nos actions</a></li>
+                        <li><a href="{{ url_for('benevole') }}" class="hover:text-asm-bordeaux transition-colors">Bénévolat</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3 class="text-white font-serif font-semibold text-lg mb-6">Contact</h3>
-                    <ul class="space-y-4 text-sm text-gray-200">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1 text-asm-gold"></i>
-                            <span>Paris, France</span>
-                        </li>
+                <div class="md:col-span-2">
+                    <h3 class="text-asm-dark font-bold text-sm uppercase tracking-widest mb-8">Navigation</h3>
+                    <ul class="space-y-4 text-gray-500 text-sm">
+                        <li><a href="{{ url_for('don') }}" class="hover:text-asm-bordeaux transition-colors">Faire un don</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="hover:text-asm-bordeaux transition-colors">Contact</a></li>
+                        <li><a href="{{ url_for('admin_login') }}" class="hover:text-asm-bordeaux transition-colors">Espace Membres</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="md:col-span-4 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-asm-dark font-bold text-sm uppercase tracking-widest mb-6">Contact</h3>
+                    <ul class="space-y-4 text-sm text-gray-500">
                         <li class="flex items-center gap-3">
                             <i class="fas fa-phone text-asm-gold"></i>
-                            <a href="tel:+33613851679" class="hover:text-white">+33 6 13 85 16 79</a>
+                            <a href="tel:+33613851679" class="hover:text-asm-dark font-medium transition-colors">+33 6 13 85 16 79</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-envelope text-asm-gold"></i>
-                            <a href="mailto:maggie.langlier@gmail.com" class="hover:text-white">maggie.langlier<br>@gmail.com</a>
+                            <a href="mailto:maggie.langlier@gmail.com" class="hover:text-asm-dark font-medium transition-colors">maggie.langlier@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-asm-gold"></i>
+                            <span>Paris, France</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+            <div class="border-t border-gray-100 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-widest font-bold">
                 <p>&copy; 2024 Association Saint Martin. Tous droits réservés.</p>
-                <div class="space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors">Mentions légales</a>
-                    <a href="#" class="hover:text-white transition-colors">Confidentialité</a>
+                <div class="space-x-8 mt-4 md:mt-0 uppercase">
+                    <a href="#" class="hover:text-asm-dark transition-colors">Mentions légales</a>
+                    <a href="#" class="hover:text-asm-dark transition-colors">Confidentialité</a>
+                    <a href="#" class="hover:text-asm-dark transition-colors">Cookies</a>
                 </div>
             </div>
         </div>
