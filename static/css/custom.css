@@ -1,22 +1,36 @@
 /* Animations d'entrée (Fade in et Slide up) */
-.fade-in-section, .slide-up-anim {
+.fade-in-section, .slide-up-anim, .reveal-left, .reveal-right, .reveal-fade {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, visibility;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, visibility;
 }
 
 .fade-in-section {
-    opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .slide-up-anim {
     transform: translateY(30px);
 }
 
-.fade-in-section.is-visible, .slide-up-anim.is-visible {
+.reveal-left {
+    transform: translateX(-50px);
+}
+
+.reveal-right {
+    transform: translateX(50px);
+}
+
+.reveal-fade {
+    transform: none; /* Just opacity for images */
+}
+
+.fade-in-section.is-visible, 
+.slide-up-anim.is-visible, 
+.reveal-left.is-visible, 
+.reveal-right.is-visible, 
+.reveal-fade.is-visible {
     opacity: 1;
     transform: none;
     visibility: visible;

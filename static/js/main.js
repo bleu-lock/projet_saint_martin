@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const fadeElements = document.querySelectorAll('.fade-in-section, .slide-up-anim');
+    const fadeElements = document.querySelectorAll('.fade-in-section, .slide-up-anim, .reveal-left, .reveal-right, .reveal-fade');
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Trigger quand 15% de l'élément est visible
+        rootMargin: '0px 0px -100px 0px', // Trigger slightly before the element is in view for better feel
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -13,11 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 
+                // Staggered children if requested
+                if (entry.target.classList.contains('stagger-children')) {
+                    const children = entry.target.children;
+                    Array.from(children).forEach((child, index) => {
+                        child.style.transitionDelay = `${index * 0.1}s`;
+                    });
+                }
+                
                 // Si l'élément contient des compteurs, on les lance
                 const counters = entry.target.querySelectorAll('.counter') || [];
                 if (entry.target.classList.contains('counter')) {
                     animateCounter(entry.target);
-                    entry.target.classList.remove('counter'); // Prevent re-animating
+                    entry.target.classList.remove('counter'); 
                 }
                 counters.forEach(counter => {
                     animateCounter(counter);
