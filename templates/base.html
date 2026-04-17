@@ -50,30 +50,46 @@
                 <div class="flex items-center">
                     <a href="{{ url_for('index') }}" class="flex items-center gap-3 group py-1">
                         <img class="h-14 md:h-16 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out animate-float-infinite" src="{{ url_for('static', filename='images/logo-saint martin.jpeg') }}" alt="Logo Association Saint Martin">
-                        <span id="typewriter-text" class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300"></span>
-                        <span class="w-1 h-6 bg-asm-gold animate-pulse ml-1"></span>
+                        <span id="typewriter-text" class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 min-w-[200px]"></span>
                     </a>
                 </div>
 
                 <script>
-                    const text = "Association Saint Martin";
+                    const messages = ["Association Saint Martin", "Aide humanitaire à Paris"];
                     const target = document.getElementById('typewriter-text');
+                    let messageIndex = 0;
                     let i = 0;
                     let isDeleting = false;
                     
                     function type() {
-                        const current = text.substring(0, i);
+                        const currentMessage = messages[messageIndex];
+                        const current = currentMessage.substring(0, i);
                         target.innerText = current;
                         
-                        if (!isDeleting && i < text.length) {
+                        let typeSpeed = 80; // Vitesse d'écriture rapide
+                        
+                        if (isDeleting) {
+                            typeSpeed /= 2; // Effacement encore plus rapide
+                        }
+
+                        if (!isDeleting && i < currentMessage.length) {
                             i++;
-                            setTimeout(type, 150);
+                            setTimeout(type, typeSpeed);
                         } else if (isDeleting && i > 0) {
                             i--;
-                            setTimeout(type, 100);
+                            setTimeout(type, typeSpeed);
                         } else {
-                            isDeleting = !isDeleting;
-                            setTimeout(type, 1500);
+                            if (!isDeleting) {
+                                // Pause à la fin du message
+                                setTimeout(() => {
+                                    isDeleting = true;
+                                    type();
+                                }, 2000);
+                            } else {
+                                isDeleting = false;
+                                messageIndex = (messageIndex + 1) % messages.length;
+                                setTimeout(type, 500);
+                            }
                         }
                     }
                     window.addEventListener('DOMContentLoaded', type);
