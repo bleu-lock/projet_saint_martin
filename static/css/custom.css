@@ -68,6 +68,47 @@ body {
     100% { opacity: 0; display: none; }
 }
 
+/* Parallax Image Container */
+.parallax-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.parallax-img {
+    height: 120%; /* Taller than container to allow movement */
+    width: 100%;
+    object-fit: cover;
+    will-change: transform;
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+/* Glassmorphism badges */
+.glass-badge {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.glass-badge-dark {
+    background: rgba(139, 26, 26, 0.7); /* asm-bordeaux with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Updated card design */
+.project-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
 /* Helper pour Masonry sur Webkit/Firefox */
 @media (min-width: 640px) {
     .columns-2 {

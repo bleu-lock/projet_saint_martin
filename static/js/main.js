@@ -39,6 +39,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => observer.observe(el));
     
+    // --- Parallax Effect for Project Images ---
+    const parallaxImages = document.querySelectorAll('.parallax-img');
+    
+    const handleParallax = () => {
+        parallaxImages.forEach(img => {
+            const container = img.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (containerRect.top < windowHeight && containerRect.bottom > 0) {
+                // Calculate position relative to viewport (0 to 1)
+                const scrollPercent = (windowHeight - containerRect.top) / (windowHeight + containerRect.height);
+                // Move image slightly (adjusted by CSS height: 120%)
+                const moveY = (scrollPercent - 0.5) * 60; // Max 30px up/down
+                img.style.transform = `scale(1.1) translateY(${moveY}px)`;
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', handleParallax, { passive: true });
+    handleParallax(); // Initial position check
+    
     // Au cas où les compteurs ne sont pas dans un fade-in-section
     const pureCounters = document.querySelectorAll('.counter:not(.fade-in-section)');
     pureCounters.forEach(el => observer.observe(el));
