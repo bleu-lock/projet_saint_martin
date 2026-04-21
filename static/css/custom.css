@@ -216,6 +216,46 @@ section {
    RESPONSIVE MOBILE FIXES
    ============================ */
 
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    /* Désactivation de la perspective 3D trop forte sur mobile pour éviter les overflows */
+    section {
+        perspective: none !important;
+    }
+
+    /* Réduction de l'amplitude des vagues pour mobile */
+    .reveal-wave {
+        transform: translateY(80px) scale(0.9) !important;
+    }
+    .reveal-wave-left {
+        transform: translateX(-50px) scale(0.9) !important;
+    }
+    .reveal-wave-right {
+        transform: translateX(50px) scale(0.9) !important;
+    }
+
+    /* Réduction de la taille du bouton play vidéo sur mobile */
+    .play-btn-pulse {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .play-btn-pulse i {
+        font-size: 1.5rem !important;
+    }
+
+    /* Ajustement de la galerie marquee sur mobile */
+    .marquee-container {
+        animation-duration: 20s !important;
+    }
+    .marquee-container > div > div {
+        width: 180px !important; /* Images plus petites sur mobile */
+        height: 250px !important;
+    }
+
+    /* Navbar fixes */
+    .film-grain { display: none; }
+}
+
 /* Hero section text scaling */
 @media (max-width: 640px) {
     /* Navbar */
