@@ -207,7 +207,7 @@
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <h3 class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux mb-2" x-text="slide.title"></h3>
+                                <h3 class="font-serif font-bold text-lg text-asm-bordeaux mb-2" x-text="slide.title"></h3>
                                 <p class="text-gray-500 text-xs italic" x-text="slide.desc"></p>
                             </div>
                         </div>
@@ -226,42 +226,13 @@
     </div>
 </section>
 
-<!-- Terrain Photo Gallery (Marquee) -->
-<section class="py-12 bg-asm-dark overflow-hidden">
-    <div class="text-center mb-8 anime-item">
-        <h2 class="text-2xl md:text-3xl font-serif font-bold text-white mb-2">Le Terrain en Images</h2>
-        <p class="text-gray-400 text-xs">Quelques instants capturés lors de nos interventions.</p>
-    </div>
-
-    <div class="relative w-full overflow-hidden flex pb-4">
-        <div class="marquee-container gap-4">
-            <!-- Set of Images -->
-            <div class="flex gap-4 px-2">
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover"></div>
-            </div>
-            <!-- Duplicate for loop -->
-            <div class="flex gap-4 px-2">
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover"></div>
-                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .marquee-container { display: flex; animation: marquee 30s linear infinite; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    @media (max-width: 768px) { .marquee-container { animation-duration: 20s; } }
 </style>
 
 <script>
+    // Script pour la barre de progression vidéo
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('video').forEach(v => {
             v.addEventListener('timeupdate', () => {
