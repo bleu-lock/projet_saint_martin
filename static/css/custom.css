@@ -153,6 +153,66 @@ input[type=range].custom-slider::-webkit-slider-runnable-track {
 
 
 /* ============================
+   EXTREME SURF WAVE EFFECTS (3D)
+   ============================ */
+
+/* Conteneur de perspective pour que la 3D ressorte */
+section {
+    perspective: 2000px;
+}
+
+.reveal-wave, .reveal-wave-left, .reveal-wave-right {
+    opacity: 0;
+    will-change: transform, opacity;
+    /* Transition longue avec un rebond élastique très prononcé */
+    transition: all 1.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Vague montante : vient de très bas avec une rotation à 45 degrés */
+.reveal-wave {
+    transform: translateY(300px) rotateX(-45deg) scale(0.5);
+    transform-origin: top;
+}
+
+/* Vague latérale : arrive de très loin avec une rotation style "surf" */
+.reveal-wave-left {
+    transform: translateX(-400px) rotateY(45deg) rotateZ(-10deg) scale(0.6);
+    transform-origin: left center;
+}
+
+.reveal-wave-right {
+    transform: translateX(400px) rotateY(-45deg) rotateZ(10deg) scale(0.6);
+    transform-origin: right center;
+}
+
+/* État actif : retour brutal et rebondissant à la normale */
+.reveal-wave.active, 
+.reveal-wave-left.active, 
+.reveal-wave-right.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+}
+
+/* Cascade (Stagger) ultra-décalée */
+.wave-stagger > *:nth-child(1) { transition-delay: 0.2s; }
+.wave-stagger > *:nth-child(2) { transition-delay: 0.4s; }
+.wave-stagger > *:nth-child(3) { transition-delay: 0.6s; }
+.wave-stagger > *:nth-child(4) { transition-delay: 0.8s; }
+
+/* Sortie rapide pour éviter les bugs visuels en remontant */
+.reveal-wave:not(.active), .reveal-wave-left:not(.active), .reveal-wave-right:not(.active) {
+    transition: all 0.5s ease-out;
+}
+
+/* Animation pour les images (effet de zoom doux) */
+.wave-zoom {
+    transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wave-zoom.active {
+    transform: scale(1.05);
+}
+
+/* ============================
    RESPONSIVE MOBILE FIXES
    ============================ */
 
@@ -177,6 +237,50 @@ input[type=range].custom-slider::-webkit-slider-runnable-track {
         bottom: 5.5rem;
         padding: 0.6rem;
     }
+}
+
+/* ============================
+   CINEMATIC EFFECTS
+   ============================ */
+
+/* Film Grain */
+.film-grain {
+    position: absolute;
+    inset: -100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Noise_Texture.png');
+    opacity: 0.05;
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    30% { transform: translate(3%, -15%); }
+    50% { transform: translate(12%, 9%); }
+    70% { transform: translate(-3%, 11%); }
+    90% { transform: translate(2%, 1%); }
+}
+
+/* REC Blink */
+.rec-blink {
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Play Button Pulse */
+.play-btn-pulse {
+    animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(201, 168, 76, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
 }
 
 /* Ensure images never overflow */

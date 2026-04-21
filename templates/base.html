@@ -19,6 +19,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     
@@ -351,21 +354,83 @@
     <!-- Custom Scripts -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-    // Scroll Reveal Animation Script
-    const revealCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+    // --- MOTEUR D'ANIMATION ANIME.JS ---
+    
+    // Animation d'entrée standard (Spring effect)
+    const animateIn = (el) => {
+        anime({
+            targets: el,
+            translateY: [100, 0],
+            rotateX: [15, 0],
+            opacity: [0, 1],
+            scale: [0.9, 1],
+            duration: 1200,
+            easing: 'easeOutElastic(1, .8)'
+        });
+    };
+
+    // Animation de cascade pour les listes (Stagger)
+    const animateStagger = (container) => {
+        const items = container.querySelectorAll(':scope > *');
+        anime({
+            targets: items,
+            translateY: [50, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150),
+            duration: 1000,
+            easing: 'easeOutQuad'
+        });
+    };
+
+    // Animation des compteurs
+    const animateCounter = (el) => {
+        const targetValue = parseInt(el.getAttribute('data-target'));
+        const obj = { value: 0 };
+        anime({
+            targets: obj,
+            value: targetValue,
+            round: 1,
+            easing: 'easeOutExpo',
+            duration: 2000,
+            update: () => {
+                el.innerHTML = obj.value;
             }
         });
     };
 
-    const revealObserver = new IntersectionObserver(revealCallback, {
-        threshold: 0.1
-    });
+    // Observer pour déclencher Anime.js
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-    document.querySelectorAll('.reveal-fade, .reveal-left, .reveal-right').forEach(el => {
-        revealObserver.observe(el);
+    const animeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                
+                if (target.classList.contains('anime-item')) {
+                    animateIn(target);
+                } else if (target.classList.contains('anime-list')) {
+                    animateStagger(target);
+                } else if (target.classList.contains('counter')) {
+                    animateCounter(target);
+                }
+                
+                animeObserver.unobserve(target); // On n'anime qu'une seule fois pour la fluidité
+            }
+        });
+    }, observerOptions);
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.anime-item, .anime-list, .counter').forEach(el => {
+            // On cache les éléments avant l'animation
+            if (!el.classList.contains('counter')) {
+                el.style.opacity = '0';
+            }
+            animeObserver.observe(el);
+        });
     });
     </script>
 </body>
