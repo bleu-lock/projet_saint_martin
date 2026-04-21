@@ -167,16 +167,16 @@
     </div>
 </section>
 
-<!-- Impact Gallery Section -->
+<!-- Impact Gallery Section (Slider) -->
 <section class="py-10 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-6 anime-item">
+        <div class="text-center mb-8">
             <span class="text-asm-gold font-bold tracking-widest uppercase text-[10px]">Galerie d'Impact</span>
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mt-2 mb-4">Chaque Regard <span class="text-asm-bordeaux italic">Compte</span></h2>
             <div class="w-16 h-1 bg-asm-gold mx-auto mb-4"></div>
         </div>
 
-        <div class="relative group anime-list" x-data="{ 
+        <div class="relative group" x-data="{ 
             active: 0,
             slides: [
                 { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variés.' },
@@ -195,26 +195,59 @@
                 this.active = Math.round(scrollLeft / cardWidth);
             }
         }">
-            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-8" id="impact-slider" @scroll.debounce.50ms="updateActive($el)">
+            <!-- Main Slider Container -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-8" 
+                 id="impact-slider"
+                 @scroll.debounce.50ms="updateActive($el)">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <div class="flex-none w-[260px] md:w-[450px] snap-center anime-item">
-                        <div class="bg-asm-offwhite rounded-[2rem] overflow-hidden shadow-xl border-4 border-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group/card h-full">
+                    <div class="flex-none w-[260px] md:w-[450px] snap-center">
+                        <div class="bg-asm-offwhite rounded-[2rem] overflow-hidden shadow-xl border-4 border-white h-full">
                             <div class="h-[260px] md:h-[400px] relative overflow-hidden">
-                                <img :src="slide.img" class="w-full h-full object-cover transform group-hover/card:scale-110 transition-transform duration-1000" alt="Impact">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+                                <img :src="slide.img" class="w-full h-full object-cover" alt="Impact">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             </div>
                             <div class="p-6">
-                                <h3 class="font-serif font-bold text-lg text-asm-bordeaux mb-2" x-text="slide.title"></h3>
+                                <h3 class="font-serif font-bold text-lg md:text-xl text-asm-bordeaux mb-2" x-text="slide.title"></h3>
                                 <p class="text-gray-500 text-xs italic" x-text="slide.desc"></p>
                             </div>
                         </div>
                     </div>
                 </template>
             </div>
+            
+            <!-- Dots -->
             <div class="flex justify-center gap-2 mt-2">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <button class="w-2 h-2 rounded-full transition-all duration-300" :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"></button>
+                    <button class="w-2 h-2 rounded-full transition-all duration-300" 
+                            :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"></button>
                 </template>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Terrain Photo Gallery (Marquee) -->
+<section class="py-12 bg-asm-dark overflow-hidden">
+    <div class="text-center mb-8 anime-item">
+        <h2 class="text-2xl md:text-3xl font-serif font-bold text-white mb-2">Le Terrain en Images</h2>
+        <p class="text-gray-400 text-xs">Quelques instants capturés lors de nos interventions.</p>
+    </div>
+
+    <div class="relative w-full overflow-hidden flex pb-4">
+        <div class="marquee-container gap-4">
+            <!-- Set of Images -->
+            <div class="flex gap-4 px-2">
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover"></div>
+            </div>
+            <!-- Duplicate for loop -->
+            <div class="flex gap-4 px-2">
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-33.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-46-53.jpg') }}" class="w-full h-full object-cover"></div>
+                <div class="w-48 h-64 md:w-72 md:h-96 flex-shrink-0 rounded-xl overflow-hidden"><img src="{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 3.jpg') }}" class="w-full h-full object-cover"></div>
             </div>
         </div>
     </div>
@@ -223,10 +256,12 @@
 <style>
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .marquee-container { display: flex; animation: marquee 30s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @media (max-width: 768px) { .marquee-container { animation-duration: 20s; } }
 </style>
 
 <script>
-    // Script pour la barre de progression vidéo
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('video').forEach(v => {
             v.addEventListener('timeupdate', () => {
