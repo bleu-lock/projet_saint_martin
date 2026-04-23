@@ -6,52 +6,40 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <!-- Context & Images -->
             <div class="reveal-left">
-                <span class="inline-block py-1 px-3 border border-asm-gold text-asm-gold rounded-full text-xs font-bold tracking-widest uppercase mb-6">
-                    Rejoindre l'équipe
-                </span>
-                <h1 class="text-4xl md:text-6xl font-serif font-bold text-asm-bordeaux mb-6">
-                    Devenez la main qui se tend.
-                </h1>
-                <p class="text-lg text-gray-600 mb-8 font-light">
-                    À l'Association Saint Martin, nous croyons que la dignité commence par une conversation chaleureuse. Rejoignez nos maraudes hebdomadaires à Paris et devenez un pont d'espoir pour ceux qui en ont le plus besoin.
-                </p>
-
-                <div class="bg-asm-offwhite p-6 rounded-2xl border-l-4 border-asm-dark mb-8">
-                    <h4 class="font-bold text-asm-dark mb-2">Rencontre Hebdomadaire</h4>
-                    <p class="text-sm text-gray-600">Nous nous réunissons chaque semaine. Un briefing complet est assuré avant chaque départ afin de vous accompagner.</p>
-                </div>
-
-                <div class="rounded-3xl overflow-hidden shadow-2xl relative h-64 reveal-fade">
-                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 6.jpg') }}" alt="Equipe" class="w-full h-full object-cover">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-asm-bordeaux mb-6">Devenez la main qui se tend.</h1>
+                <p class="text-lg text-gray-600 mb-8 font-light">Rejoignez nos maraudes hebdomadaires à Paris.</p>
+                <div class="rounded-3xl overflow-hidden shadow-2xl h-64">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 6.jpg') }}" class="w-full h-full object-cover" alt="Equipe">
                 </div>
             </div>
 
-            <!-- Form -->
-            <div class="bg-asm-offwhite rounded-3xl p-8 lg:p-12 shadow-xl reveal-right">
-                <h3 class="text-2xl font-serif font-bold text-asm-dark mb-6">Formulaire d'inscription</h3>      
+            <div class="bg-asm-offwhite rounded-3xl p-8 lg:p-12 shadow-xl">
                 <form action="{{ url_for('benevole') }}" method="POST" class="space-y-6">
                     <div>
-                        <label for="nom" class="block text-sm font-bold text-gray-700 mb-2">Nom complet *</label>
-                        <input type="text" id="nom" name="nom" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none transition-all">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Nom complet *</label>
+                        <input type="text" name="nom" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none transition-all">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
                         </div>
                         <div>
-                            <label for="telephone" class="block text-sm font-bold text-gray-700 mb-2">Téléphone *</label>
-                            <input type="tel" id="telephone" name="telephone" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none transition-all">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Téléphone *</label>
+                            <input type="tel" name="telephone" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-4">Vos disponibilités *</label> 
                         <div class="space-y-3">
-                            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" name="disponibilite" value="Soiree" class="w-5 h-5 text-asm-bordeaux"> <span class="text-gray-600">Soirée en semaine</span></label>
-                            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" name="disponibilite" value="Weekend" class="w-5 h-5 text-asm-bordeaux"> <span class="text-gray-600">Week-end</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" name="disponibilite" value="Soiree" class="w-5 h-5 text-asm-bordeaux"> <span>Soirée en semaine</span></label>
+                            <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" name="disponibilite" value="Weekend" class="w-5 h-5 text-asm-bordeaux"> <span>Week-end</span></label>
                         </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Motivation *</label>
+                        <textarea name="motivation" rows="4" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none resize-none"></textarea>
                     </div>
                     <button type="submit" class="w-full bg-asm-bordeaux text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-900 transition-all">
                         Envoyer ma candidature
