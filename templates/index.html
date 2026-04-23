@@ -7,8 +7,8 @@
 <section class="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
     <!-- Background Image Slideshow with Parallax effect via Alpine.js -->
     <div class="absolute inset-0 z-0 bg-black" 
-         x-data="{ 
-            activeSlide: 0, 
+         x-data="{
+            activeSlide: 0,
             slides: [
                 '{{ url_for('static', filename='images/PHOTO-2026-03-19-13-40-38.jpg') }}',
                 '{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 2.jpg') }}',
@@ -17,7 +17,7 @@
             ],
             init() {
                 setInterval(() => {
-                    this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
+                    this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;  
                 }, 5000);
             }
          }">
@@ -28,7 +28,7 @@
             </div>
         </template>
     </div>
-    
+
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8 sm:mt-16">
         <span class="inline-block py-1 px-4 border border-asm-gold text-asm-gold rounded-full text-xs font-bold tracking-widest uppercase mb-6 anime-item">
             Action Humanitaire
@@ -36,8 +36,8 @@
         <h1 class="text-4xl md:text-7xl font-serif text-white font-bold leading-tight mb-6 max-w-4xl mx-auto anime-item" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
             Ensemble dans la rue,<br><span class="text-asm-gold italic">pour redonner espoir</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-2xl mx-auto font-light anime-item">
-            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignitÃ© et chaleur humaine au cÅ“ur de la ville.
+        <p class="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-2xl mx-auto font-light anime-item">      
+            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignité et chaleur humaine au cœur de la ville.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center anime-item pb-12 md:pb-0">
             <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-8 py-4 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2">
@@ -48,10 +48,10 @@
             </a>
         </div>
     </div>
-    
+
     <!-- Scroll Down Indicator -->
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/70 animate-bounce">
-        <span class="text-xs tracking-widest uppercase font-semibold">DÃ©couvrir</span>
+        <span class="text-xs tracking-widest uppercase font-semibold">Découvrir</span>
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
@@ -61,19 +61,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="100">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Personnes aidÃ©es / an</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Personnes aidées / an</span>
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="70">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">BÃ©nÃ©voles engagÃ©s</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Bénévoles engagés</span>
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="4">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Projets actifs</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Projets actifs</span>    
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="5">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">AnnÃ©es d'existence</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Années d'existence</span>
         </div>
     </div>
 </section>
@@ -84,19 +84,19 @@
         <!-- Header -->
         <div class="text-center mb-20 anime-item">
             <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-4 block">Notre Engagement</span>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au CÅ“ur de la <span class="text-asm-bordeaux italic">DignitÃ© Humaine</span></h2>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au Cœur de la <span class="text-asm-bordeaux italic">Dignité Humaine</span></h2>
             <div class="w-24 h-1 bg-asm-gold mx-auto"></div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <!-- Left Column: Slider -->
-            <div class="relative anime-item" x-data="{ 
-                active: 0, 
+            <div class="relative anime-item" x-data="{
+                active: 0,
                 slides: [
-                    { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'PrÃ©sence Nocturne', desc: 'Nos maraudes dÃ©butent quand la ville s\'endort, pour apporter chaleur et Ã©coute.' },
-                    { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une rÃ©insertion rÃ©ussie.' },
-                    { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide MatÃ©rielle', desc: 'Distribution de kits d\'hygiÃ¨ne et de vÃªtements adaptÃ©s Ã  chaque saison.' },
-                    { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses dÃ©marches pour retrouver ses droits.' }
+                    { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'Présence Nocturne', desc: 'Nos maraudes débutent quand la ville s\'endort, pour apporter chaleur et écoute.' },
+                    { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une réinsertion réussie.' },
+                    { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide Matérielle', desc: 'Distribution de kits d\'hygiène et de vêtements adaptés à chaque saison.' },
+                    { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses démarches pour retrouver ses droits.' }
                 ],
                 init() {
                     setInterval(() => { this.active = (this.active + 1) % this.slides.length; }, 6000);
@@ -105,7 +105,7 @@
                 <div class="relative h-[500px] md:h-[650px] rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-white">
                     <template x-for="(slide, index) in slides" :key="index">
                         <div class="absolute inset-0 transition-all duration-1000 ease-in-out"
-                             :class="active === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'">
+                             :class="active === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'">       
                             <img :src="slide.img" class="w-full h-full object-cover" alt="Mission">
                             <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-10 pt-20">
                                 <h3 class="text-white font-serif font-bold text-3xl mb-3" x-text="slide.title"></h3>
@@ -114,7 +114,6 @@
                         </div>
                     </template>
                 </div>
-                <div class="absolute -z-10 -top-10 -left-10 w-40 h-40 bg-asm-gold/20 rounded-full blur-2xl animate-pulse"></div>
             </div>
 
             <!-- Right Column: Video Player -->
@@ -124,16 +123,16 @@
                         <span class="w-10 h-0.5 bg-asm-gold"></span>
                         <span class="text-asm-gold font-bold tracking-[0.2em] text-xs uppercase">Visionner nos reportages</span>
                     </div>
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">TÃ©moignages du Terrain</h3>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">Témoignages du Terrain</h3>
                     <p class="text-gray-600 leading-relaxed mb-8 font-light">
-                        Plongez au cÅ“ur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignitÃ©.
+                        Plongez au cœur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignité.
                     </p>
                 </div>
 
                 <div class="space-y-8" x-data="{ currentVid: 1, isPlaying: false }">
                     <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video bg-black group cursor-pointer"
                          @click="const v = document.getElementById('docu-vid-' + currentVid); if(v.paused){v.play(); isPlaying=true;}else{v.pause(); isPlaying=false;}">
-                        <div class="absolute inset-0 z-20 pointer-events-none opacity-[0.03] film-grain"></div>
+                        <div class="absolute inset-0 z-20 pointer-events-none opacity-[0.03] film-grain"></div> 
                         <div class="absolute top-6 left-6 z-30 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
                             <div class="w-2 h-2 rounded-full bg-red-600 rec-blink shadow-[0_0_8px_rgba(220,38,38,0.8)]"></div>
                             <span class="text-[10px] text-white font-bold tracking-widest uppercase" x-text="currentVid === 1 ? 'REPORTAGE #01' : 'MOMENT #02'"></span>
@@ -141,7 +140,7 @@
                         <video x-show="currentVid === 1" id="docu-vid-1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline>
                             <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
                         </video>
-                        <video x-show="currentVid === 2" id="docu-vid-2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline style="display: none;">
+                        <video x-show="currentVid === 2" id="docu-vid-2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline style="display: none;">   
                             <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 flex items-center justify-center z-30 transition-all duration-500" :class="isPlaying ? 'opacity-0 scale-150 pointer-events-none' : 'opacity-100 scale-100'">
@@ -149,15 +148,12 @@
                                 <i class="fas fa-play text-white text-2xl md:text-3xl ml-1.5"></i>
                             </div>
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-white/10 z-30">
-                            <div class="h-full bg-asm-gold transition-all duration-300" id="video-progress" style="width: 0%"></div>
-                        </div>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button @click="currentVid = 1; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 1 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">
+                        <button @click="currentVid = 1; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 1 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
                             <i class="fas fa-video"></i> Action de Terrain
                         </button>
-                        <button @click="currentVid = 2; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 2 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">
+                        <button @click="currentVid = 2; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 2 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
                             <i class="fas fa-heart"></i> Moments de Vie
                         </button>
                     </div>
@@ -167,36 +163,36 @@
     </div>
 </section>
 
-<!-- Impact Gallery Section (Slider) -->
+<!-- Impact Gallery Section -->
 <section class="py-10 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
-            <span class="text-asm-gold font-bold tracking-widest uppercase text-[10px]">Galerie d'Impact</span>
+            <span class="text-asm-gold font-bold tracking-widest uppercase text-[10px]">Galerie d'Impact</span> 
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mt-2 mb-4">Chaque Regard <span class="text-asm-bordeaux italic">Compte</span></h2>
             <div class="w-16 h-1 bg-asm-gold mx-auto mb-4"></div>
         </div>
 
-        <div class="relative group" x-data="{ 
+        <div class="relative group" x-data="{
             active: 0,
             slides: [
-                { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variÃ©s.' },
-                { img: '{{ url_for('static', filename='images/action-6.jpg') }}', title: 'Ã‰coute Active', desc: 'Prendre le temps de parler.' },
+                { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variés.' },
+                { img: '{{ url_for('static', filename='images/action-6.jpg') }}', title: 'Écoute Active', desc: 'Prendre le temps de parler.' },
                 { img: '{{ url_for('static', filename='images/action-7.jpg') }}', title: 'Soutien en Hiver', desc: 'Distribution de duvets.' },
                 { img: '{{ url_for('static', filename='images/action-8.jpg') }}', title: 'Maraude de Jour', desc: 'Maintenir le lien social.' },
-                { img: '{{ url_for('static', filename='images/action-9.jpg') }}', title: 'Kits d\'HygiÃ¨ne', desc: 'L\'accÃ¨s Ã  la propretÃ©.' },
-                { img: '{{ url_for('static', filename='images/action-10.jpg') }}', title: 'Accompagnement', desc: 'Aider Ã  l\'installation.' },
-                { img: '{{ url_for('static', filename='images/action-11.jpg') }}', title: 'Maraude Nocturne', desc: 'PrÃ©sence rassurante.' },
+                { img: '{{ url_for('static', filename='images/action-9.jpg') }}', title: 'Kits d\'Hygiène', desc: 'L\'accès à la propreté.' },
+                { img: '{{ url_for('static', filename='images/action-10.jpg') }}', title: 'Accompagnement', desc: 'Aider à l\'installation.' },
+                { img: '{{ url_for('static', filename='images/action-11.jpg') }}', title: 'Maraude Nocturne', desc: 'Présence rassurante.' },
                 { img: '{{ url_for('static', filename='images/action-12.jpg') }}', title: 'Ateliers Solidaires', desc: 'Reconstruire l\'estime.' },
-                { img: '{{ url_for('static', filename='images/action-13.jpg') }}', title: 'DignitÃ© RetrouvÃ©e', desc: 'Le sourire d\'un bÃ©nÃ©ficiaire.' }
+                { img: '{{ url_for('static', filename='images/action-13.jpg') }}', title: 'Dignité Retrouvée', desc: 'Le sourire d\'un bénéficiaire.' }
             ],
             updateActive(el) {
                 const scrollLeft = el.scrollLeft;
-                const cardWidth = window.innerWidth < 768 ? 276 : 474; 
+                const cardWidth = window.innerWidth < 768 ? 276 : 474;
                 this.active = Math.round(scrollLeft / cardWidth);
             }
         }">
             <!-- Main Slider Container -->
-            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-8" 
+            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-8"
                  id="impact-slider"
                  @scroll.debounce.50ms="updateActive($el)">
                 <template x-for="(slide, index) in slides" :key="index">
@@ -214,11 +210,11 @@
                     </div>
                 </template>
             </div>
-            
+
             <!-- Dots -->
             <div class="flex justify-center gap-2 mt-2">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <button class="w-2 h-2 rounded-full transition-all duration-300" 
+                    <button class="w-2 h-2 rounded-full transition-all duration-300"
                             :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"></button>
                 </template>
             </div>
@@ -232,7 +228,7 @@
 </style>
 
 <script>
-    // Script pour la barre de progression vidÃ©o
+    // Script pour la barre de progression vidéo
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('video').forEach(v => {
             v.addEventListener('timeupdate', () => {
