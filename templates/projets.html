@@ -19,7 +19,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Cinematic Video Player -->
-        <div class="w-full mb-16">
+        <div class="w-full mb-8">
             <div class="relative bg-gradient-to-br from-[#3A0808] via-[#1a0000] to-black rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row group">
                 <div class="relative z-20 flex flex-col justify-center p-10 md:p-16 w-full md:w-2/5 bg-gradient-to-r from-black/90 to-transparent">
                     <div class="flex items-center gap-2 text-asm-gold font-bold text-xs uppercase tracking-[0.22em] mb-6">
@@ -68,10 +68,10 @@
 </section>
 
 <!-- Infinite Marquee Gallery (CORRECTED) -->
-<section class="py-24 bg-asm-dark overflow-hidden">
-    <div class="text-center mb-16">
-        <h2 class="text-4xl font-serif font-bold text-white mb-4">Le Terrain en Images</h2>
-        <p class="text-gray-400">Quelques instants capturés lors de nos interventions.</p>
+<section class="py-12 bg-asm-offwhite overflow-hidden">
+    <div class="text-center mb-8">
+        <h2 class="text-4xl font-serif font-bold text-asm-dark mb-2">Le Terrain en Images</h2>
+        <p class="text-gray-500">Quelques instants capturés lors de nos interventions.</p>
     </div>
 
     <style>
@@ -93,7 +93,7 @@
             {% for _ in range(2) %}
             <div class="flex gap-6 px-3" style="min-width:max-content;">
                 {% for img in imgs %}
-                <div class="w-72 h-96 flex-shrink-0 group rounded-xl overflow-hidden shadow-2xl border-2 border-white/10">
+                <div class="w-72 h-96 flex-shrink-0 group rounded-xl overflow-hidden shadow-md border border-white">
                     <img src="{{ url_for('static', filename=img) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 {% endfor %}
