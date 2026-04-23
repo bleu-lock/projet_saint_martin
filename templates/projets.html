@@ -69,7 +69,8 @@
 
 <!-- Infinite Marquee Gallery (CORRECTED) -->
 <section class="py-12 bg-asm-offwhite overflow-hidden">
-    <div class="text-center mb-8">
+    <div class="text-center mb-16 anime-item">
+        <span class="text-asm-gold font-bold tracking-widest uppercase text-xs mb-3 block">Instants de Solidarité</span>
         <h2 class="text-4xl font-serif font-bold text-asm-dark mb-2">Le Terrain en Images</h2>
         <p class="text-gray-500">Quelques instants capturés lors de nos interventions.</p>
     </div>
@@ -80,7 +81,7 @@
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 
-    <div class="relative w-full overflow-hidden flex pb-12">
+    <div class="relative w-full overflow-hidden flex pb-12 anime-item" style="transition-delay: 200ms;">
         <div class="marquee-container gap-6">
             {% set imgs = [
                 'images/PHOTO-2024-05-06-22-32-51.jpg',
