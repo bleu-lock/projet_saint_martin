@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
 {% block title %}Accueil - Association Saint Martin{% endblock %}
 
@@ -37,7 +37,7 @@
             Ensemble dans la rue,<br><span class="text-asm-gold italic">pour redonner espoir</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-2xl mx-auto font-light anime-item">
-            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignité et chaleur humaine au cœur de la ville.
+            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignitÃ© et chaleur humaine au cÅ“ur de la ville.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center anime-item pb-12 md:pb-0">
             <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-8 py-4 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2">
@@ -51,7 +51,7 @@
     
     <!-- Scroll Down Indicator -->
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/70 animate-bounce">
-        <span class="text-xs tracking-widest uppercase font-semibold">Découvrir</span>
+        <span class="text-xs tracking-widest uppercase font-semibold">DÃ©couvrir</span>
         <i class="fas fa-chevron-down"></i>
     </div>
 </section>
@@ -61,11 +61,11 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="100">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Personnes aidées / an</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Personnes aidÃ©es / an</span>
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="70">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Bénévoles engagés</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">BÃ©nÃ©voles engagÃ©s</span>
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="4">0</span>
@@ -73,7 +73,7 @@
         </div>
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="5">0</span>
-            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">Années d'existence</span>
+            <span class="text-sm text-gray-500 font-semibold tracking-wider uppercase">AnnÃ©es d'existence</span>
         </div>
     </div>
 </section>
@@ -84,7 +84,7 @@
         <!-- Header -->
         <div class="text-center mb-20 anime-item">
             <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-4 block">Notre Engagement</span>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au Cœur de la <span class="text-asm-bordeaux italic">Dignité Humaine</span></h2>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au CÅ“ur de la <span class="text-asm-bordeaux italic">DignitÃ© Humaine</span></h2>
             <div class="w-24 h-1 bg-asm-gold mx-auto"></div>
         </div>
 
@@ -93,10 +93,10 @@
             <div class="relative anime-item" x-data="{ 
                 active: 0, 
                 slides: [
-                    { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'Présence Nocturne', desc: 'Nos maraudes débutent quand la ville s\'endort, pour apporter chaleur et écoute.' },
-                    { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une réinsertion réussie.' },
-                    { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide Matérielle', desc: 'Distribution de kits d\'hygiène et de vêtements adaptés à chaque saison.' },
-                    { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses démarches pour retrouver ses droits.' }
+                    { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'PrÃ©sence Nocturne', desc: 'Nos maraudes dÃ©butent quand la ville s\'endort, pour apporter chaleur et Ã©coute.' },
+                    { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une rÃ©insertion rÃ©ussie.' },
+                    { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide MatÃ©rielle', desc: 'Distribution de kits d\'hygiÃ¨ne et de vÃªtements adaptÃ©s Ã  chaque saison.' },
+                    { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses dÃ©marches pour retrouver ses droits.' }
                 ],
                 init() {
                     setInterval(() => { this.active = (this.active + 1) % this.slides.length; }, 6000);
@@ -124,9 +124,9 @@
                         <span class="w-10 h-0.5 bg-asm-gold"></span>
                         <span class="text-asm-gold font-bold tracking-[0.2em] text-xs uppercase">Visionner nos reportages</span>
                     </div>
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">Témoignages du Terrain</h3>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">TÃ©moignages du Terrain</h3>
                     <p class="text-gray-600 leading-relaxed mb-8 font-light">
-                        Plongez au cœur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignité.
+                        Plongez au cÅ“ur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignitÃ©.
                     </p>
                 </div>
 
@@ -179,15 +179,15 @@
         <div class="relative group" x-data="{ 
             active: 0,
             slides: [
-                { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variés.' },
-                { img: '{{ url_for('static', filename='images/action-6.jpg') }}', title: 'Écoute Active', desc: 'Prendre le temps de parler.' },
+                { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variÃ©s.' },
+                { img: '{{ url_for('static', filename='images/action-6.jpg') }}', title: 'Ã‰coute Active', desc: 'Prendre le temps de parler.' },
                 { img: '{{ url_for('static', filename='images/action-7.jpg') }}', title: 'Soutien en Hiver', desc: 'Distribution de duvets.' },
                 { img: '{{ url_for('static', filename='images/action-8.jpg') }}', title: 'Maraude de Jour', desc: 'Maintenir le lien social.' },
-                { img: '{{ url_for('static', filename='images/action-9.jpg') }}', title: 'Kits d\'Hygiène', desc: 'L\'accès à la propreté.' },
-                { img: '{{ url_for('static', filename='images/action-10.jpg') }}', title: 'Accompagnement', desc: 'Aider à l\'installation.' },
-                { img: '{{ url_for('static', filename='images/action-11.jpg') }}', title: 'Maraude Nocturne', desc: 'Présence rassurante.' },
+                { img: '{{ url_for('static', filename='images/action-9.jpg') }}', title: 'Kits d\'HygiÃ¨ne', desc: 'L\'accÃ¨s Ã  la propretÃ©.' },
+                { img: '{{ url_for('static', filename='images/action-10.jpg') }}', title: 'Accompagnement', desc: 'Aider Ã  l\'installation.' },
+                { img: '{{ url_for('static', filename='images/action-11.jpg') }}', title: 'Maraude Nocturne', desc: 'PrÃ©sence rassurante.' },
                 { img: '{{ url_for('static', filename='images/action-12.jpg') }}', title: 'Ateliers Solidaires', desc: 'Reconstruire l\'estime.' },
-                { img: '{{ url_for('static', filename='images/action-13.jpg') }}', title: 'Dignité Retrouvée', desc: 'Le sourire d\'un bénéficiaire.' }
+                { img: '{{ url_for('static', filename='images/action-13.jpg') }}', title: 'DignitÃ© RetrouvÃ©e', desc: 'Le sourire d\'un bÃ©nÃ©ficiaire.' }
             ],
             updateActive(el) {
                 const scrollLeft = el.scrollLeft;
@@ -200,10 +200,10 @@
                  id="impact-slider"
                  @scroll.debounce.50ms="updateActive($el)">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <div class="flex-none w-[260px] md:w-[450px] snap-center">
-                        <div class="bg-asm-offwhite rounded-[2rem] overflow-hidden shadow-xl border-4 border-white h-full">
+                    <div class="flex-none w-[260px] md:w-[450px] snap-center group/card">
+                        <div class="bg-asm-offwhite rounded-[2rem] overflow-hidden shadow-xl border-4 border-white h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-asm-gold/20">
                             <div class="h-[260px] md:h-[400px] relative overflow-hidden">
-                                <img :src="slide.img" class="w-full h-full object-cover" alt="Impact">
+                                <img :src="slide.img" class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" alt="Impact">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             </div>
                             <div class="p-6">
@@ -232,7 +232,7 @@
 </style>
 
 <script>
-    // Script pour la barre de progression vidéo
+    // Script pour la barre de progression vidÃ©o
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('video').forEach(v => {
             v.addEventListener('timeupdate', () => {
