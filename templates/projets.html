@@ -1,21 +1,44 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Nos Projets - Association Saint Martin{% endblock %}
 
 {% block content %}
+
+
 <!-- Page Header -->
-<section class="pt-32 pb-20 bg-asm-offwhite">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-serif font-bold text-asm-bordeaux mb-6">Nos Projets & Actions</h1>
-        <div class="w-24 h-1 bg-asm-gold mx-auto mb-6"></div>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            Découvrez nos initiatives concrètes sur le terrain pour restaurer la dignité et réchauffer les cœurs.
+<section id="projets-header-section" class="relative pt-28 pb-16 md:pt-36 md:pb-24 flex items-center justify-center min-h-[400px] md:min-h-[480px] z-10 bg-transparent">
+
+    <!-- Header Glassmorphic Plate -->
+    <div id="header-glass-card" class="relative z-10 max-w-5xl w-full mx-4 sm:mx-8 lg:mx-auto backdrop-blur-xl bg-white/40 border border-white/50 shadow-[0_30px_70px_rgba(201,168,76,0.08)] rounded-[2.5rem] p-6 sm:p-10 md:p-16 text-center transition-all duration-500 ease-out hover:shadow-[0_40px_90px_rgba(201,168,76,0.12)]">
+        
+        <!-- Badge with hover glow -->
+        <div class="inline-block mb-6 opacity-0 translate-y-4 header-anim-item">
+            <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-asm-bordeaux/10 text-asm-bordeaux text-xs font-bold tracking-widest uppercase border border-asm-bordeaux/20">
+                <span class="w-2 h-2 rounded-full bg-asm-gold animate-pulse"></span>
+                Sur le Terrain
+            </span>
+        </div>
+
+        <!-- Mask-clipped slide-up title (extremely high-end) -->
+        <div class="overflow-hidden mb-6 py-2">
+            <h1 id="header-title" class="text-4xl md:text-6xl font-bold leading-tight text-asm-dark opacity-0 translate-y-full header-anim-item font-sans">
+                Nos Projets <span class="text-asm-bordeaux font-serif font-semibold italic">&amp; Actions</span>
+            </h1>
+        </div>
+
+        <!-- Expanding Gold Divider Line -->
+        <div id="header-divider" class="w-0 h-[2px] bg-asm-gold mx-auto mb-8 transition-all duration-1000 ease-out"></div>
+
+        <!-- Description with subtle highlights -->
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto font-light leading-relaxed opacity-0 translate-y-6 header-anim-item" style="text-shadow: 0 1px 0px rgba(255,255,255,0.8);">
+            Découvrez nos initiatives concrètes sur le terrain pour <span class="text-asm-bordeaux font-semibold relative inline-block group/dignity cursor-pointer">restaurer la dignité<span class="absolute bottom-0 left-0 w-full h-[1.5px] bg-asm-bordeaux transform scale-x-0 group-hover/dignity:scale-x-100 transition-transform duration-300"></span></span> et <span class="text-asm-bordeaux font-semibold relative inline-block group/hearts cursor-pointer">réchauffer les cœurs<span class="absolute bottom-0 left-0 w-full h-[1.5px] bg-asm-bordeaux transform scale-x-0 group-hover/hearts:scale-x-100 transition-transform duration-300"></span></span> au quotidien.
         </p>
+
     </div>
 </section>
 
 <!-- Featured Projects -->
-<section class="py-16 bg-white overflow-hidden">
+<section class="py-16 bg-transparent overflow-hidden relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Cinematic Video Player -->
@@ -43,9 +66,8 @@
             </div>
         </div>
 
-        <!-- 2-Column Projects -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="bg-asm-offwhite rounded-3xl overflow-hidden shadow-lg flex flex-col">
+            <div class="backdrop-blur-md bg-white/60 border border-white/50 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col">
                 <div class="h-64 overflow-hidden group">
                     <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-13-37-00.jpg') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
@@ -54,7 +76,7 @@
                     <p class="text-gray-600 text-sm">Une soirée musicale exceptionnelle à l'Église de Grenelle pour financer l'aide alimentaire.</p>
                 </div>
             </div>
-            <div class="bg-asm-offwhite rounded-3xl overflow-hidden shadow-lg flex flex-col">
+            <div class="backdrop-blur-md bg-white/60 border border-white/50 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col">
                 <div class="h-64 overflow-hidden group">
                     <img src="{{ url_for('static', filename='images/PHOTO-2024-12-23-23-42-18.jpg') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
@@ -68,7 +90,7 @@
 </section>
 
 <!-- Infinite Marquee Gallery (CORRECTED) -->
-<section class="py-12 bg-asm-offwhite overflow-hidden">
+<section class="py-12 bg-transparent overflow-hidden relative z-10">
     <div class="text-center mb-16 anime-item">
         <span class="text-asm-gold font-bold tracking-widest uppercase text-xs mb-3 block">Instants de Solidarité</span>
         <h2 class="text-4xl font-serif font-bold text-asm-dark mb-2">Le Terrain en Images</h2>
@@ -114,5 +136,59 @@ function playDoc() {
     video.classList.remove('hidden');
     video.play();
 }
+</script>
+
+
+
+<script>
+    // Script pour le background intuitif et l'animation d'entrée Framer-Motion style
+    document.addEventListener('DOMContentLoaded', () => {
+        const section = document.getElementById('projets-header-section');
+        const blob = document.getElementById('interactive-blob');
+        const card = document.getElementById('header-glass-card');
+        if (!blob || !card) return;
+
+        // 1. Expansion de la ligne de division dorée
+        setTimeout(() => {
+            const div = document.getElementById('header-divider');
+            if (div) div.style.width = '96px';
+        }, 400);
+
+        // 2. Animation d'entrée des éléments avec Anime.js
+        if (typeof anime !== 'undefined') {
+            anime.timeline({
+                easing: 'easeOutElastic(1, .85)',
+            })
+            .add({
+                targets: '.header-anim-item',
+                translateY: (el) => {
+                    return el.id === 'header-title' ? [120, 0] : [30, 0];
+                },
+                opacity: [0, 1],
+                delay: anime.stagger(150, { start: 200 }),
+                duration: 1400
+            });
+        }
+
+
+
+        // 4. Tilt 3D de la carte d'en-tête uniquement lors du survol de l'en-tête
+        if (section) {
+            section.addEventListener('mousemove', (e) => {
+                const cardRect = card.getBoundingClientRect();
+                const cardCenterX = cardRect.left + cardRect.width / 2;
+                const cardCenterY = cardRect.top + cardRect.height / 2;
+                
+                const tiltX = (e.clientX - cardCenterX) / (window.innerWidth / 2);
+                const tiltY = (e.clientY - cardCenterY) / (window.innerHeight / 2);
+
+                card.style.transform = `perspective(1000px) rotateX(${-tiltY * 4}deg) rotateY(${tiltX * 4}deg) translateY(-2px)`;
+            });
+
+            section.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        }
+    });
 </script>
 {% endblock %}

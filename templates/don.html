@@ -1,48 +1,53 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Faire un don - Association Saint Martin{% endblock %}
 
 {% block content %}
-<section class="min-h-[85vh] flex items-center py-24 bg-white">
+<section class="min-h-[85vh] flex items-center py-24 bg-transparent relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             <!-- Left Info -->
-            <div class="anime-item">
-                <span class="inline-block py-1 px-3 border border-asm-bordeaux text-asm-bordeaux rounded-full text-xs font-bold tracking-widest uppercase mb-6">
-                    Votre Impact
-                </span>
-                <h1 class="text-4xl md:text-7xl font-serif font-bold text-asm-dark mb-6 leading-tight">
+            <div id="donation-info-container" class="space-y-8">
+                <div class="don-anim-item opacity-0 translate-y-6">
+                    <span class="inline-block py-1.5 px-4 border border-asm-bordeaux text-asm-bordeaux rounded-full text-xs font-bold tracking-widest uppercase bg-asm-bordeaux/5">
+                        Votre Impact
+                    </span>
+                </div>
+                <h1 class="don-anim-item opacity-0 translate-y-6 text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-asm-dark leading-tight">
                     Transformer des vies,<br><span class="italic text-asm-gold">une histoire à la fois.</span> 
                 </h1>
-                <p class="text-lg text-gray-600 mb-10 leading-relaxed font-light">
-                    Chaque don à l'Association Saint Martin fournit bien plus que des ressources — il offre de la dignité, de l'espoir et ouvre un chemin vers l'avenir pour les plus démunis.
+                <p class="don-anim-item opacity-0 translate-y-6 text-lg text-gray-800 font-medium leading-relaxed max-w-xl">
+                    Chaque don à l'Association Saint Martin fournit bien plus que des ressources — il offre de la <span class="text-asm-bordeaux font-bold relative inline-block">dignité</span>, de l'<span class="text-asm-bordeaux font-bold relative inline-block">espoir</span> et ouvre un <span class="text-asm-bordeaux font-bold relative inline-block">chemin vers l'avenir</span> pour les plus démunis.
                 </p>
 
-                <div class="space-y-6 mb-10">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-asm-bordeaux flex-shrink-0">
-                            <i class="fas fa-utensils"></i>
+                <div class="space-y-6 mb-10 max-w-xl">
+                    <!-- Card 1 -->
+                    <div class="don-anim-item opacity-0 translate-y-6 backdrop-blur-md bg-white/40 border border-white/50 shadow-md rounded-2xl p-6 flex items-start gap-4 hover:shadow-lg hover:bg-white/50 hover:scale-[1.02] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-asm-bordeaux flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+                            <i class="fas fa-utensils text-lg"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-asm-dark text-lg">20€ : Nutrition Quotidienne</h4>      
-                            <p class="text-sm text-gray-500">Fournit cinq repas chauds et complets pour des personnes en instabilité de logement.</p>
+                            <h4 class="font-serif font-bold text-xl text-asm-bordeaux mb-1">20€ : Nutrition Quotidienne</h4>      
+                            <p class="text-sm text-gray-800 font-semibold leading-relaxed">Fournit cinq repas chauds et complets pour des personnes en instabilité de logement.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-asm-bordeaux flex-shrink-0">
-                            <i class="fas fa-medkit"></i>
+                    <!-- Card 2 -->
+                    <div class="don-anim-item opacity-0 translate-y-6 backdrop-blur-md bg-white/40 border border-white/50 shadow-md rounded-2xl p-6 flex items-start gap-4 hover:shadow-lg hover:bg-white/50 hover:scale-[1.02] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-asm-bordeaux flex items-center justify-center text-white flex-shrink-0 shadow-lg">
+                            <i class="fas fa-medkit text-lg"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-asm-dark text-lg">50€ : Soins d'Urgence</h4>
-                            <p class="text-sm text-gray-500">Finance un kit d'hygiène complet et des vêtements propres pour affronter l'hiver.</p>
+                            <h4 class="font-serif font-bold text-xl text-asm-bordeaux mb-1">50€ : Soins d'Urgence</h4>
+                            <p class="text-sm text-gray-800 font-semibold leading-relaxed">Finance un kit d'hygiène complet et des vêtements propres pour affronter l'hiver.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right Donation Form -->
-            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-gray-100 reveal-right">       
+            <div class="container-scroll">
+                <div class="container-scroll-card backdrop-blur-md bg-white/60 rounded-3xl shadow-2xl p-8 md:p-10 border border-white/50">       
                 <div class="text-center mb-8">
                     <h3 class="text-2xl font-serif font-bold text-asm-dark">Choisissez votre soutien</h3>       
                     <p class="text-sm text-gray-500 mt-2">Paiement 100% sécurisé via HelloAsso</p>
@@ -78,7 +83,34 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('donation-info-container');
+    if (!container) return;
+
+    // Déclenchement de l'animation échelonnée (stagger) avec Anime.js
+    if (typeof anime !== 'undefined') {
+        anime({
+            targets: container.querySelectorAll('.don-anim-item'),
+            translateY: [30, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(150, { start: 200 }),
+            duration: 1200,
+            easing: 'easeOutElastic(1, .8)'
+        });
+    } else {
+        container.querySelectorAll('.don-anim-item').forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                item.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            }, 200 + index * 150);
+        });
+    }
+});
+</script>
 {% endblock %}

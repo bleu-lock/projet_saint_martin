@@ -1,8 +1,24 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Accueil - Association Saint Martin{% endblock %}
 
 {% block content %}
+<!-- Gooey Morphing SVG Filter -->
+<svg class="absolute h-0 w-0" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="threshold">
+      <feColorMatrix
+        in="SourceGraphic"
+        type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 255 -140"
+      />
+    </filter>
+  </defs>
+</svg>
+
 <!-- Hero Section -->
 <section class="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
     <!-- Background Image Slideshow with Parallax effect via Alpine.js -->
@@ -18,7 +34,7 @@
             init() {
                 setInterval(() => {
                     this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;  
-                }, 5000);
+                }, 3000);
             }
          }">
         <template x-for="(slide, index) in slides" :key="index">
@@ -30,21 +46,26 @@
     </div>
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-8 sm:mt-16">
-        <span class="inline-block py-1 px-4 border border-asm-gold text-asm-gold rounded-full text-xs font-bold tracking-widest uppercase mb-6 anime-item">
-            Action Humanitaire
-        </span>
         <h1 class="text-4xl md:text-7xl font-serif text-white font-bold leading-tight mb-6 max-w-4xl mx-auto anime-item" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-            Ensemble dans la rue,<br><span class="text-asm-gold italic">pour redonner espoir</span>
+            Ensemble dans la rue,<br>
+            <span class="relative block w-full h-[60px] md:h-[90px] flex items-center justify-center mt-2 overflow-visible">
+                <span class="flex items-center justify-center w-full" style="filter: url(#threshold);">
+                    <span id="morph-text1" class="absolute inline-block select-none text-center text-4xl md:text-7xl font-serif font-bold text-asm-gold italic"></span>
+                    <span id="morph-text2" class="absolute inline-block select-none text-center text-4xl md:text-7xl font-serif font-bold text-asm-gold italic"></span>
+                </span>
+            </span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-2xl mx-auto font-light anime-item">      
-            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant dignité et chaleur humaine au cœur de la ville.
+        <p class="text-lg md:text-2xl text-gray-200 mb-8 md:mb-12 max-w-3xl mx-auto font-light leading-relaxed anime-item" style="text-shadow: 0 2px 8px rgba(0,0,0,0.6);">      
+            Nous agissons au quotidien pour soutenir ceux qui n'ont plus rien, en apportant <span class="text-asm-gold font-serif font-semibold italic relative inline-block cursor-pointer group/word">dignité<span class="absolute bottom-0 left-0 w-full h-[2px] bg-asm-gold transform scale-x-0 group-hover/word:scale-x-100 transition-transform duration-300"></span></span> et <span class="text-asm-gold font-serif font-semibold italic relative inline-block cursor-pointer group/word">chaleur humaine<span class="absolute bottom-0 left-0 w-full h-[2px] bg-asm-gold transform scale-x-0 group-hover/word:scale-x-100 transition-transform duration-300"></span></span> au cœur de la ville.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center anime-item pb-12 md:pb-0">
-            <a href="{{ url_for('don') }}" class="bg-asm-bordeaux text-white px-8 py-4 rounded-full font-medium shadow-lg hover:bg-red-900 transition-all transform hover:-translate-y-1 hover:shadow-xl flex items-center justify-center gap-2">
-                Faire un don <i class="fas fa-heart text-sm"></i>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center anime-item pb-12 md:pb-0">
+            <a href="{{ url_for('don') }}" class="relative overflow-hidden group bg-gradient-to-r from-asm-bordeaux to-[#6a1212] text-white px-10 py-5 rounded-full font-bold shadow-2xl hover:shadow-[0_15px_30px_rgba(139,26,26,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 border border-asm-gold/20">
+                <!-- Ambient hover sweep effect -->
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-asm-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></span>
+                Faire un don <i class="fas fa-heart text-asm-gold group-hover:scale-125 transition-transform duration-300"></i>
             </a>
-            <a href="{{ url_for('benevole') }}" class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-asm-dark transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                Nous rejoindre <i class="fas fa-hands-helping text-sm"></i>
+            <a href="{{ url_for('benevole') }}" class="relative overflow-hidden group bg-white/5 backdrop-blur-md border-2 border-white/20 text-white px-10 py-5 rounded-full font-bold hover:border-asm-gold hover:bg-white hover:text-asm-dark transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3 shadow-lg">
+                Nous rejoindre <i class="fas fa-hands-helping text-white group-hover:text-asm-bordeaux group-hover:scale-110 transition-all duration-300"></i>
             </a>
         </div>
     </div>
@@ -57,7 +78,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-16 bg-white relative z-20 shadow-xl -mt-4 md:-mt-8 mx-4 sm:mx-8 lg:mx-auto max-w-6xl rounded-2xl border border-gray-100 anime-item">
+<section class="py-16 backdrop-blur-md bg-white/60 relative z-20 shadow-xl -mt-4 md:-mt-8 mx-4 sm:mx-8 lg:mx-auto max-w-6xl rounded-2xl border border-white/50 anime-item">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100">
         <div class="px-4">
             <span class="counter block text-4xl md:text-5xl font-serif font-bold text-asm-bordeaux mb-2" data-target="100">0</span>
@@ -78,98 +99,138 @@
     </div>
 </section>
 
-<!-- Mission Section -->
-<section class="py-24 bg-asm-offwhite overflow-hidden relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
-        <div class="text-center mb-20 anime-item">
-            <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-4 block">Notre Engagement</span>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au Cœur de la <span class="text-asm-bordeaux italic">Dignité Humaine</span></h2>
-            <div class="w-24 h-1 bg-asm-gold mx-auto"></div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <!-- Left Column: Slider -->
-            <div class="relative anime-item" x-data="{
-                active: 0,
-                slides: [
-                    { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'Présence Nocturne', desc: 'Nos maraudes débutent quand la ville s\'endort, pour apporter chaleur et écoute.' },
-                    { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une réinsertion réussie.' },
-                    { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide Matérielle', desc: 'Distribution de kits d\'hygiène et de vêtements adaptés à chaque saison.' },
-                    { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses démarches pour retrouver ses droits.' }
-                ],
-                init() {
-                    setInterval(() => { this.active = (this.active + 1) % this.slides.length; }, 6000);
-                }
-            }">
-                <div class="relative h-[500px] md:h-[650px] rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-white">
-                    <template x-for="(slide, index) in slides" :key="index">
-                        <div class="absolute inset-0 transition-all duration-1000 ease-in-out"
-                             :class="active === index ? 'opacity-100 scale-100' : 'opacity-0 scale-110'">       
-                            <img :src="slide.img" class="w-full h-full object-cover" alt="Mission">
-                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-10 pt-20">
-                                <h3 class="text-white font-serif font-bold text-3xl mb-3" x-text="slide.title"></h3>
-                                <p class="text-gray-200 text-lg font-light leading-relaxed" x-text="slide.desc"></p>
-                            </div>
-                        </div>
-                    </template>
+<!-- Scroll Expansion Wrapper -->
+<div id="mission-scroll-container" class="relative w-full" style="height: 220vh;">
+    <!-- Sticky viewport -->
+    <div class="sticky top-0 w-full h-screen overflow-hidden bg-transparent flex flex-col items-center justify-center">
+        <!-- Background image of the scroll expansion -->
+        <div id="scroll-bg" class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='images/PHOTO-2026-03-19-13-40-38.jpg') }}'); filter: brightness(0.35);"></div>
+        
+        <!-- Sticky layout container -->
+        <div class="relative z-10 w-full h-full flex flex-col items-center justify-center">
+            
+            <!-- Centered expanding media card -->
+            <div id="scroll-media-card" class="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden shadow-2xl" style="width: 300px; height: 400px; max-width: 95vw; max-height: 85vh;">
+                <video id="scroll-video" src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" autoplay muted loop playsinline class="w-full h-full object-cover rounded-3xl"></video>
+                <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
+                
+                <!-- Overlay labels inside the expanding card -->
+                <div id="scroll-labels" class="absolute inset-x-0 bottom-6 flex flex-col items-center text-center text-white z-20 transition-opacity duration-300">
+                    <p class="text-xs font-bold tracking-widest uppercase text-asm-gold">Maraudes de Nuit</p>
+                    <p class="text-[10px] mt-1 text-gray-300 animate-pulse uppercase tracking-wider font-semibold">Faites défiler pour étendre</p>
                 </div>
             </div>
+            
+            <!-- Parallax titles -->
+            <div class="flex flex-col items-center justify-center gap-4 text-center w-full z-20 pointer-events-none mix-blend-difference select-none px-4">
+                <h2 id="scroll-title-left" class="text-5xl md:text-8xl font-serif font-bold text-white tracking-wider">Notre</h2>
+                <h2 id="scroll-title-right" class="text-5xl md:text-8xl font-serif font-bold text-white tracking-wider">Engagement</h2>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Actual Content that fades/scrolls in once expanded -->
+    <div id="mission-content-wrapper" class="relative z-20 w-full bg-asm-offwhite py-24 -mt-[10vh] transition-opacity duration-500 opacity-0 pointer-events-none">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-20">
+                <span class="text-asm-gold font-bold tracking-widest uppercase text-sm mb-4 block">Notre Engagement</span>
+                <h2 class="text-4xl md:text-6xl font-serif font-bold text-asm-dark mb-6 leading-tight">Au Cœur de la <span class="text-asm-bordeaux italic">Dignité Humaine</span></h2>
+                <div class="w-24 h-1 bg-asm-gold mx-auto"></div>
+            </div>
 
-            <!-- Right Column: Video Player -->
-            <div class="anime-item">
-                <div class="mb-8">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-10 h-0.5 bg-asm-gold"></span>
-                        <span class="text-asm-gold font-bold tracking-[0.2em] text-xs uppercase">Visionner nos reportages</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <!-- Left Column: Slider -->
+                <div class="relative" x-data="{
+                    active: 0,
+                    slides: [
+                        { img: '{{ url_for('static', filename='images/action-1.jpg') }}', title: 'Présence Nocturne', desc: 'Nos maraudes débutent quand la ville s\'endort, pour apporter chaleur et écoute.' },
+                        { img: '{{ url_for('static', filename='images/action-2.jpg') }}', title: 'Partage Fraternel', desc: 'Un repas chaud est souvent le premier pas vers une réinsertion réussie.' },
+                        { img: '{{ url_for('static', filename='images/action-3.jpg') }}', title: 'Aide Matérielle', desc: 'Distribution de kits d\'hygiène et de vêtements adaptés à chaque saison.' },
+                        { img: '{{ url_for('static', filename='images/action-4.jpg') }}', title: 'Accompagnement', desc: 'Nous suivons chaque personne dans ses démarches pour retrouver ses droits.' }
+                    ],
+                    init() {
+                        setInterval(() => { this.active = (this.active + 1) % this.slides.length; }, 6000);
+                    }
+                }">
+                    <div class="relative h-[500px] md:h-[650px] rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-white">
+                        <template x-for="(slide, index) in slides" :key="index">
+                            <div x-show="active === index"
+                                 x-transition:enter="transition-all duration-1000 ease-out"
+                                 x-transition:enter-start="opacity-0 scale-105"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 x-transition:leave="transition-all duration-1000 ease-in"
+                                 x-transition:leave-start="opacity-100 scale-100"
+                                 x-transition:leave-end="opacity-0 scale-105"
+                                 class="absolute inset-0">       
+                                <img :src="slide.img" class="w-full h-full object-cover" alt="Mission">
+                                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-10 pt-20">
+                                    <h3 class="text-white font-serif font-bold text-3xl mb-3" x-text="slide.title"></h3>
+                                    <p class="text-gray-200 text-lg font-light leading-relaxed" x-text="slide.desc"></p>
+                                </div>
+                            </div>
+                        </template>
                     </div>
-                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">Témoignages du Terrain</h3>
-                    <p class="text-gray-600 leading-relaxed mb-8 font-light">
-                        Plongez au cœur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignité.
-                    </p>
                 </div>
 
-                <div class="space-y-8" x-data="{ currentVid: 1, isPlaying: false }">
-                    <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video bg-black group cursor-pointer"
-                         @click="const v = document.getElementById('docu-vid-' + currentVid); if(v.paused){v.play(); isPlaying=true;}else{v.pause(); isPlaying=false;}">
-                        <div class="absolute inset-0 z-20 pointer-events-none opacity-[0.03] film-grain"></div> 
-                        <div class="absolute top-6 left-6 z-30 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
-                            <div class="w-2 h-2 rounded-full bg-red-600 rec-blink shadow-[0_0_8px_rgba(220,38,38,0.8)]"></div>
-                            <span class="text-[10px] text-white font-bold tracking-widest uppercase" x-text="currentVid === 1 ? 'REPORTAGE #01' : 'MOMENT #02'"></span>
+                <!-- Right Column: Video Player -->
+                <div class="container-scroll">
+                    <div class="container-scroll-header mb-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-10 h-0.5 bg-asm-gold"></span>
+                            <span class="text-asm-gold font-bold tracking-[0.2em] text-xs uppercase">Visionner nos reportages</span>
                         </div>
-                        <video x-show="currentVid === 1" id="docu-vid-1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline>
-                            <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
-                        </video>
-                        <video x-show="currentVid === 2" id="docu-vid-2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline style="display: none;">   
-                            <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
-                        </video>
-                        <div class="absolute inset-0 flex items-center justify-center z-30 transition-all duration-500" :class="isPlaying ? 'opacity-0 scale-150 pointer-events-none' : 'opacity-100 scale-100'">
-                            <div class="w-20 h-20 md:w-24 md:h-24 bg-asm-gold rounded-full flex items-center justify-center play-btn-pulse">
-                                <i class="fas fa-play text-white text-2xl md:text-3xl ml-1.5"></i>
+                        <h3 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mb-6 italic">Témoignages du Terrain</h3>
+                        <p class="text-gray-600 leading-relaxed mb-8 font-light">
+                            Plongez au cœur de nos actions. Plus que de simples images, c'est le reflet de notre combat quotidien pour la dignité.
+                        </p>
+                    </div>
+
+                    <div class="space-y-8" x-data="{ currentVid: 1, isPlaying: false }">
+                        <div class="container-scroll-card relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-video bg-black group cursor-pointer"
+                             @click="const v = document.getElementById('docu-vid-' + currentVid); if(v.paused){v.play(); isPlaying=true;}else{v.pause(); isPlaying=false;}">
+                            <div class="absolute inset-0 z-20 pointer-events-none opacity-[0.03] film-grain"></div> 
+                            <div class="absolute top-6 left-6 z-30 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                                <div class="w-2 h-2 rounded-full bg-red-600 rec-blink shadow-[0_0_8px_rgba(220,38,38,0.8)]"></div>
+                                <span class="text-[10px] text-white font-bold tracking-widest uppercase" x-text="currentVid === 1 ? 'REPORTAGE #01' : 'MOMENT #02'"></span>
+                            </div>
+                            <video x-show="currentVid === 1" id="docu-vid-1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline>
+                                <source src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" type="video/mp4">
+                            </video>
+                            <video x-show="currentVid === 2" id="docu-vid-2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" loop muted playsinline style="display: none;">   
+                                <source src="{{ url_for('static', filename='videos/video-action-2.mp4') }}" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 flex items-center justify-center z-30 transition-all duration-500" :class="isPlaying ? 'opacity-0 scale-150 pointer-events-none' : 'opacity-100 scale-100'">
+                                <div class="w-20 h-20 md:w-24 md:h-24 bg-asm-gold rounded-full flex items-center justify-center play-btn-pulse">
+                                    <i class="fas fa-play text-white text-2xl md:text-3xl ml-1.5"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button @click="currentVid = 1; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 1 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
-                            <i class="fas fa-video"></i> Action de Terrain
-                        </button>
-                        <button @click="currentVid = 2; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 2 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
-                            <i class="fas fa-heart"></i> Moments de Vie
-                        </button>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button @click="currentVid = 1; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 1 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
+                                <i class="fas fa-video"></i> Action de Terrain
+                            </button>
+                            <button @click="currentVid = 2; isPlaying = false; document.querySelectorAll('video').forEach(v => {v.pause(); v.currentTime=0;});" :class="currentVid === 2 ? 'border-asm-bordeaux bg-asm-bordeaux text-white shadow-lg' : 'border-gray-200 text-gray-400 hover:border-asm-gold'" class="flex-1 py-4 px-6 rounded-2xl border-2 transition-all text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3">     
+                                <i class="fas fa-heart"></i> Moments de Vie
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- Impact Gallery Section -->
-<section class="py-10 bg-white overflow-hidden">
+<section class="py-10 bg-transparent overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8">
-            <span class="text-asm-gold font-bold tracking-widest uppercase text-[10px]">Galerie d'Impact</span> 
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-asm-dark mt-2 mb-4">Chaque Regard <span class="text-asm-bordeaux italic">Compte</span></h2>
-            <div class="w-16 h-1 bg-asm-gold mx-auto mb-4"></div>
+        <div class="text-center mb-12">
+            <span class="text-asm-gold font-bold tracking-widest uppercase text-xs mb-4 block">Galerie d'Impact</span> 
+            <div id="vapour-wrapper" class="relative w-full h-[80px] md:h-[120px] flex items-center justify-center max-w-4xl mx-auto overflow-visible select-none">
+                <canvas id="vapour-canvas" style="width: 100%; height: 100%; pointer-events: none;"></canvas>
+            </div>
+            <div class="w-16 h-1 bg-asm-gold mx-auto mt-4"></div>
         </div>
 
         <div class="relative group" x-data="{
@@ -197,7 +258,7 @@
                  @scroll.debounce.50ms="updateActive($el)">
                 <template x-for="(slide, index) in slides" :key="index">
                     <div class="flex-none w-[260px] md:w-[450px] snap-center group/card">
-                        <div class="bg-asm-offwhite rounded-[2rem] overflow-hidden shadow-xl border-4 border-white h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-asm-gold/20">
+                        <div class="backdrop-blur-md bg-white/60 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white/50 h-full transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-asm-gold/20">
                             <div class="h-[260px] md:h-[400px] relative overflow-hidden">
                                 <img :src="slide.img" class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" alt="Impact">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -240,5 +301,433 @@
             });
         });
     });
+
+    // Script pour le morphing de texte "Gooey" de la section Hero
+    document.addEventListener('DOMContentLoaded', () => {
+        const el1 = document.getElementById("morph-text1");
+        const el2 = document.getElementById("morph-text2");
+        if (!el1 || !el2) return;
+
+        const texts = [
+            "pour redonner espoir",
+            "pour réchauffer les cœurs",
+            "pour restaurer la dignité",
+            "pour rompre l'isolement",
+            "pour partager un repas"
+        ];
+        const morphTime = 1.0;
+        const cooldownTime = 1.5;
+
+        let textIndex = texts.length - 1;
+        let time = new Date();
+        let morph = 0;
+        let cooldown = cooldownTime;
+
+        el1.textContent = texts[textIndex % texts.length];
+        el2.textContent = texts[(textIndex + 1) % texts.length];
+
+        function setMorph(fraction) {
+            el2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+            el2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+            fraction = 1 - fraction;
+            el1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+            el1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+        }
+
+        function doCooldown() {
+            morph = 0;
+            el2.style.filter = "";
+            el2.style.opacity = "100%";
+            el1.style.filter = "";
+            el1.style.opacity = "0%";
+        }
+
+        function doMorph() {
+            morph -= cooldown;
+            cooldown = 0;
+            let fraction = morph / morphTime;
+
+            if (fraction > 1) {
+                cooldown = cooldownTime;
+                fraction = 1;
+            }
+
+            setMorph(fraction);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const newTime = new Date();
+            const shouldIncrementIndex = cooldown > 0;
+            const dt = (newTime.getTime() - time.getTime()) / 1000;
+            time = newTime;
+
+            cooldown -= dt;
+
+            if (cooldown <= 0) {
+                if (shouldIncrementIndex) {
+                    textIndex = (textIndex + 1) % texts.length;
+                    el1.textContent = texts[textIndex % texts.length];
+                    el2.textContent = texts[(textIndex + 1) % texts.length];
+                }
+                doMorph();
+            } else {
+                doCooldown();
+            }
+        }
+
+        animate();
+    });
+
+    // Script pour le défilement et l'expansion média (ScrollExpandMedia)
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('mission-scroll-container');
+        const bg = document.getElementById('scroll-bg');
+        const card = document.getElementById('scroll-media-card');
+        const titleLeft = document.getElementById('scroll-title-left');
+        const titleRight = document.getElementById('scroll-title-right');
+        const labels = document.getElementById('scroll-labels');
+        const content = document.getElementById('mission-content-wrapper');
+
+        if (!container || !card || !titleLeft || !titleRight) return;
+
+        const handleScroll = () => {
+            const rect = container.getBoundingClientRect();
+            const containerHeight = rect.height;
+            const viewHeight = window.innerHeight;
+
+            // Calcul du progrès (0 à 1) lorsque le conteneur sticky défile
+            let progress = 0;
+            if (rect.top <= 0) {
+                const scrollableHeight = containerHeight - viewHeight;
+                progress = Math.min(Math.max(-rect.top / scrollableHeight, 0), 1);
+            }
+
+            const isMobile = window.innerWidth < 768;
+            const startWidth = 300;
+            const startHeight = 400;
+            
+            // Dimensions cibles
+            const endWidth = window.innerWidth;
+            const endHeight = window.innerHeight;
+
+            // Interpolations
+            const width = startWidth + progress * (endWidth - startWidth);
+            const height = startHeight + progress * (endHeight - startHeight);
+            
+            card.style.width = `${width}px`;
+            card.style.height = `${height}px`;
+
+            // Coins arrondis réduits à 0 lors de l'expansion
+            const borderRadius = 24 * (1 - progress);
+            card.style.borderRadius = `${borderRadius}px`;
+
+            // Effet parallaxe : les mots glissent sur les côtés
+            const maxTranslate = isMobile ? 120 : 150;
+            const translateX = progress * maxTranslate;
+            
+            titleLeft.style.transform = `translateX(-${translateX}vw)`;
+            titleRight.style.transform = `translateX(${translateX}vw)`;
+
+            // Opacité de l'image de fond
+            if (bg) bg.style.opacity = 1 - progress;
+
+            // Cacher les labels d'instruction
+            if (labels) {
+                labels.style.opacity = progress > 0.1 ? 0 : 1;
+            }
+
+            // Révéler le contenu de la mission en fondu sur le dernier quart du scroll
+            if (content) {
+                if (progress >= 0.85) {
+                    const contentProgress = (progress - 0.85) / 0.15;
+                    content.style.opacity = contentProgress;
+                    content.style.pointerEvents = 'auto';
+                } else {
+                    content.style.opacity = 0;
+                    content.style.pointerEvents = 'none';
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        
+        // Appel initial
+        handleScroll();
+    });
+
+    // Script pour l'effet de vaporisation de texte "Vapour Text Effect"
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('vapour-canvas');
+        const wrapper = document.getElementById('vapour-wrapper');
+        if (!canvas || !wrapper) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const texts = [
+            "Chaque Regard Compte",
+            "Chaque Geste Soutient",
+            "Chaque Sourire Éclaire",
+            "Chaque Vie Importe"
+        ];
+
+        let currentTextIndex = 0;
+        let animationState = "vaporizing"; // "static" | "vaporizing" | "fadingIn" | "waiting"
+        let vaporizeProgress = 0;
+        let fadeOpacity = 0;
+        let particles = [];
+        let textBoundaries = { left: 0, right: 0, width: 0 };
+        let animationFrameId = null;
+        let lastTime = performance.now();
+
+        // Configuration
+        const vaporizeDuration = 2000; // ms
+        const fadeInDuration = 1000; // ms
+        const waitDuration = 1500; // ms
+        const spread = 5;
+        const density = 0.8; // mapped density value
+
+        function getDpr() {
+            return window.devicePixelRatio * 1.5 || 1.5;
+        }
+
+        function getFont() {
+            const isMobile = window.innerWidth < 768;
+            const size = isMobile ? 26 : 42;
+            return `italic 700 ${size * getDpr()}px "Playfair Display", serif`;
+        }
+
+        function resize() {
+            const dpr = getDpr();
+            const width = wrapper.clientWidth;
+            const height = wrapper.clientHeight;
+
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+
+            initText();
+        }
+
+        function initText() {
+            const dpr = getDpr();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "rgba(139, 26, 26, 1)";
+            ctx.font = getFont();
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+
+            const textX = canvas.width / 2;
+            const textY = canvas.height / 2;
+            const currentText = texts[currentTextIndex];
+
+            // Mesurer les dimensions du texte
+            const metrics = ctx.measureText(currentText);
+            const textWidth = metrics.width;
+            const textLeft = textX - textWidth / 2;
+
+            textBoundaries = {
+                left: textLeft,
+                right: textLeft + textWidth,
+                width: textWidth
+            };
+
+            // Dessiner le texte pour l'échantillonner
+            ctx.fillText(currentText, textX, textY);
+
+            // Échantillonner les pixels
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            particles = [];
+
+            const sampleRate = Math.max(1, Math.round(dpr / 2));
+
+            for (let y = 0; y < canvas.height; y += sampleRate) {
+                for (let x = 0; x < canvas.width; x += sampleRate) {
+                    const index = (y * canvas.width + x) * 4;
+                    const alpha = data[index + 3];
+
+                    if (alpha > 0) {
+                        const originalAlpha = (alpha / 255) * (sampleRate / dpr);
+                        particles.push({
+                            x,
+                            y,
+                            originalX: x,
+                            originalY: y,
+                            color: `rgba(139, 26, 26, ${originalAlpha})`,
+                            opacity: originalAlpha,
+                            originalAlpha,
+                            velocityX: 0,
+                            velocityY: 0,
+                            angle: 0,
+                            speed: 0,
+                            shouldFadeQuickly: Math.random() > density
+                        });
+                    }
+                }
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function resetParticles() {
+            particles.forEach(p => {
+                p.x = p.originalX;
+                p.y = p.originalY;
+                p.opacity = p.originalAlpha;
+                p.speed = 0;
+                p.velocityX = 0;
+                p.velocityY = 0;
+            });
+        }
+
+        function updateParticles(vaporizeX, deltaTime) {
+            let allVaporized = true;
+            const fontSize = window.innerWidth < 768 ? 26 : 42;
+            const multipliedSpread = (fontSize * 0.015) * spread;
+
+            particles.forEach(p => {
+                if (p.originalX <= vaporizeX) {
+                    if (p.speed === 0) {
+                        p.angle = Math.random() * Math.PI * 2;
+                        p.speed = (Math.random() * 1 + 0.5) * multipliedSpread;
+                        p.velocityX = Math.cos(p.angle) * p.speed;
+                        p.velocityY = Math.sin(p.angle) * p.speed;
+                    }
+
+                    if (p.shouldFadeQuickly) {
+                        p.opacity = Math.max(0, p.opacity - deltaTime);
+                    } else {
+                        const dx = p.originalX - p.x;
+                        const dy = p.originalY - p.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        const damping = Math.max(0.95, 1 - distance / (100 * multipliedSpread));
+                        const spreadX = (Math.random() - 0.5) * multipliedSpread * 3;
+                        const spreadY = (Math.random() - 0.5) * multipliedSpread * 3;
+
+                        p.velocityX = (p.velocityX + spreadX + dx * 0.002) * damping;
+                        p.velocityY = (p.velocityY + spreadY + dy * 0.002) * damping;
+
+                        const maxVel = multipliedSpread * 2;
+                        const currentVel = Math.sqrt(p.velocityX * p.velocityX + p.velocityY * p.velocityY);
+                        if (currentVel > maxVel) {
+                            p.velocityX *= maxVel / currentVel;
+                            p.velocityY *= maxVel / currentVel;
+                        }
+
+                        p.x += p.velocityX * deltaTime * 20;
+                        p.y += p.velocityY * deltaTime * 10;
+
+                        const fadeRate = 0.25 * (2000 / vaporizeDuration);
+                        p.opacity = Math.max(0, p.opacity - deltaTime * fadeRate);
+                    }
+
+                    if (p.opacity > 0.01) {
+                        allVaporized = false;
+                    }
+                } else {
+                    allVaporized = false;
+                }
+            });
+
+            return allVaporized;
+        }
+
+        function draw() {
+            const dpr = getDpr();
+            ctx.save();
+            ctx.scale(dpr, dpr);
+            particles.forEach(p => {
+                if (p.opacity > 0) {
+                    const color = p.color.replace(/[\d.]+\)$/, `${p.opacity})`);
+                    ctx.fillStyle = color;
+                    ctx.fillRect(p.x / dpr, p.y / dpr, 1, 1);
+                }
+            });
+            ctx.restore();
+        }
+
+        function animate(currentTime) {
+            const deltaTime = (currentTime - lastTime) / 1000;
+            lastTime = currentTime;
+
+            if (particles.length === 0) {
+                animationFrameId = requestAnimationFrame(animate);
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            switch (animationState) {
+                case "static":
+                    draw();
+                    break;
+                case "vaporizing": {
+                    vaporizeProgress += (deltaTime * 100) / (vaporizeDuration / 1000);
+                    const progress = Math.min(100, vaporizeProgress);
+                    const vaporizeX = progress >= 100 
+                        ? canvas.width + 1000 
+                        : textBoundaries.left + textBoundaries.width * (progress / 100);
+
+                    const allVaporized = updateParticles(vaporizeX, deltaTime);
+                    draw();
+
+                    if ((vaporizeProgress >= 100 && allVaporized) || vaporizeProgress >= 160) {
+                        currentTextIndex = (currentTextIndex + 1) % texts.length;
+                        animationState = "fadingIn";
+                        fadeOpacity = 0;
+                        initText();
+                    }
+                    break;
+                }
+                case "fadingIn": {
+                    fadeOpacity += (deltaTime * 1000) / fadeInDuration;
+
+                    ctx.save();
+                    const dpr = getDpr();
+                    ctx.scale(dpr, dpr);
+                    particles.forEach(p => {
+                        p.x = p.originalX;
+                        p.y = p.originalY;
+                        const opacity = Math.min(fadeOpacity, 1) * p.originalAlpha;
+                        const color = p.color.replace(/[\d.]+\)$/, `${opacity})`);
+                        ctx.fillStyle = color;
+                        ctx.fillRect(p.x / dpr, p.y / dpr, 1, 1);
+                    });
+                    ctx.restore();
+
+                    if (fadeOpacity >= 1) {
+                        animationState = "waiting";
+                        setTimeout(() => {
+                            animationState = "vaporizing";
+                            vaporizeProgress = 0;
+                            resetParticles();
+                        }, waitDuration);
+                    }
+                    break;
+                }
+                case "waiting":
+                    draw();
+                    break;
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // Observer pour le redimensionnement du canvas
+    const resizeObserver = new ResizeObserver(entries => {
+        resize();
+    });
+    resizeObserver.observe(wrapper);
+
+    resize();
+    animationFrameId = requestAnimationFrame(animate);
+});
 </script>
 {% endblock %}

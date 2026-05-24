@@ -1,37 +1,35 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Devenir Bénévole - Association Saint Martin{% endblock %}
 
 {% block content %}
-<section class="py-20 bg-white">
+<section class="py-20 bg-transparent relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div class="reveal-left">
                 <h1 class="text-4xl md:text-6xl font-serif font-bold text-asm-bordeaux mb-6">Devenez la main qui se tend.</h1>
                 <p class="text-lg text-gray-600 mb-8 font-light">Rejoignez nos maraudes hebdomadaires à Paris.</p>
-                <div class="bg-asm-offwhite p-6 rounded-2xl border-l-4 border-asm-dark mb-8 anime-item">
-                    <h4 class="font-bold text-asm-dark mb-2">Rencontre Hebdomadaire</h4>
-                    <p class="text-sm text-gray-600">Nous nous réunissons chaque semaine. Un briefing complet est assuré avant chaque départ afin de vous accompagner et garantir la sécurité de tous.</p>
+                <div id="blur-anim-container" class="backdrop-blur-md bg-white/60 p-8 rounded-2xl border-l-4 border-asm-bordeaux mb-8 border border-white/40 shadow-sm overflow-hidden">
+                    <h4 id="blur-anim-title" class="font-serif font-bold text-2xl text-asm-bordeaux mb-3" data-text="Rencontre Hebdomadaire"></h4>
+                    <p id="blur-anim-desc" class="text-base text-gray-700 leading-relaxed font-light" data-text="Nous nous réunissons chaque semaine. Un briefing complet est assuré avant chaque départ afin de vous accompagner et garantir la sécurité de tous."></p>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-2xl h-64">
                     <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 6.jpg') }}" class="w-full h-full object-cover" alt="Equipe">
                 </div>
             </div>
 
-            <div class="bg-asm-offwhite rounded-3xl p-8 lg:p-12 shadow-xl">
-                <form action="{{ url_for('benevole') }}" method="POST" class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Nom complet *</label>
-                        <input type="text" name="nom" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
+            <div class="container-scroll">
+                <div class="container-scroll-card backdrop-blur-md bg-white/60 rounded-3xl p-8 lg:p-12 shadow-xl border border-white/50">
+                <form action="{{ url_for('benevole') }}" method="POST" class="space-y-8">
+                    <div class="relative pt-6">
+                        <input type="text" id="nom" name="nom" required data-label="Nom complet *" class="animated-input">
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="relative pt-6">
+                            <input type="email" id="email" name="email" required data-label="Email *" class="animated-input">
                         </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">Téléphone *</label>
-                            <input type="tel" name="telephone" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none">
+                        <div class="relative pt-6">
+                            <input type="tel" id="telephone" name="telephone" required data-label="Téléphone *" class="animated-input">
                         </div>
                     </div>
                     <div>
@@ -41,16 +39,137 @@
                             <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" name="disponibilite" value="Weekend" class="w-5 h-5 text-asm-bordeaux"> <span>Week-end</span></label>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Motivation *</label>
-                        <textarea name="motivation" rows="4" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-asm-bordeaux outline-none resize-none"></textarea>
+                    <div class="relative pt-6">
+                        <textarea id="motivation" name="motivation" rows="4" required data-label="Motivation *" class="animated-input"></textarea>
                     </div>
                     <button type="submit" class="w-full bg-asm-bordeaux text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-red-900 transition-all">
                         Envoyer ma candidature
                     </button>
                 </form>
             </div>
+            </div>
         </div>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('blur-anim-container');
+    const titleEl = document.getElementById('blur-anim-title');
+    const descEl = document.getElementById('blur-anim-desc');
+    if (!container || !titleEl || !descEl) return;
+
+    const titleText = titleEl.getAttribute('data-text');
+    const descText = descEl.getAttribute('data-text');
+    
+    let animTimeout;
+    let loopTimeout;
+    let hasStarted = false;
+
+    function runAnimationCycle() {
+        // Nettoyer les anciens éléments
+        titleEl.innerHTML = '';
+        descEl.innerHTML = '';
+        
+        // Construction des mots du titre
+        const titleWords = titleText.split(" ");
+        const titleSpans = [];
+        titleWords.forEach((word, index) => {
+            const progress = index / titleWords.length;
+            const delay = (index * 0.06) + (Math.pow(progress, 0.8) * 0.5) + ((Math.random() - 0.5) * 0.05);
+            const duration = 2.2 + Math.cos(index * 0.3) * 0.3;
+            const blurVal = 12 + Math.floor(Math.random() * 8);
+            const scaleVal = 0.9 + Math.sin(index * 0.2) * 0.05;
+            
+            const span = document.createElement('span');
+            span.className = 'inline-block transition-all transform-gpu opacity-0';
+            span.innerHTML = word === ' ' ? '&nbsp;' : word;
+            span.style.marginRight = '0.35em';
+            span.style.willChange = 'filter, transform, opacity';
+            span.style.transformStyle = 'preserve-3d';
+            span.style.backfaceVisibility = 'hidden';
+            span.style.filter = `blur(${blurVal}px) brightness(0.6)`;
+            span.style.transform = `translateY(20px) scale(${scaleVal}) rotateX(-15deg)`;
+            span.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            titleEl.appendChild(span);
+            titleSpans.push({ span, delay, duration });
+        });
+
+        // Construction des mots de la description
+        const descWords = descText.split(" ");
+        const descSpans = [];
+        descWords.forEach((word, index) => {
+            const progress = index / descWords.length;
+            const delay = (index * 0.06) + (Math.pow(progress, 0.8) * 0.5) + ((Math.random() - 0.5) * 0.05) + 0.3;
+            const duration = 2.2 + Math.cos(index * 0.3) * 0.3;
+            const blurVal = 12 + Math.floor(Math.random() * 8);
+            const scaleVal = 0.9 + Math.sin(index * 0.2) * 0.05;
+            
+            const span = document.createElement('span');
+            span.className = 'inline-block transition-all transform-gpu opacity-0';
+            span.innerHTML = word === ' ' ? '&nbsp;' : word;
+            span.style.marginRight = '0.35em';
+            span.style.willChange = 'filter, transform, opacity';
+            span.style.transformStyle = 'preserve-3d';
+            span.style.backfaceVisibility = 'hidden';
+            span.style.filter = `blur(${blurVal}px) brightness(0.6)`;
+            span.style.transform = `translateY(20px) scale(${scaleVal}) rotateX(-15deg)`;
+            span.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            descEl.appendChild(span);
+            descSpans.push({ span, delay, duration });
+        });
+
+        // Lancement de l'animation pour le titre
+        titleSpans.forEach(item => {
+            setTimeout(() => {
+                item.span.style.transitionDuration = `${item.duration}s`;
+                item.span.style.filter = 'blur(0px) brightness(1)';
+                item.span.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                item.span.classList.remove('opacity-0');
+                item.span.classList.add('opacity-100');
+            }, item.delay * 1000);
+        });
+
+        // Lancement de l'animation pour la description
+        let maxTime = 0;
+        descSpans.forEach(item => {
+            maxTime = Math.max(maxTime, item.delay + item.duration);
+            setTimeout(() => {
+                item.span.style.transitionDuration = `${item.duration}s`;
+                item.span.style.filter = 'blur(0px) brightness(1)';
+                item.span.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
+                item.span.classList.remove('opacity-0');
+                item.span.classList.add('opacity-100');
+            }, item.delay * 1000);
+        });
+
+        // Fin de cycle : effacement et relance
+        animTimeout = setTimeout(() => {
+            const allSpans = [...titleEl.querySelectorAll('span'), ...descEl.querySelectorAll('span')];
+            allSpans.forEach(span => {
+                span.style.transitionDuration = '1.2s';
+                span.style.filter = 'blur(15px) brightness(0.5)';
+                span.style.transform = 'translateY(-20px) scale(0.9) rotateX(15deg)';
+                span.classList.remove('opacity-100');
+                span.classList.add('opacity-0');
+            });
+
+            loopTimeout = setTimeout(runAnimationCycle, 2000);
+        }, (maxTime + 5) * 1000); // Reste visible 5 secondes puis redémarre
+    }
+
+    // Observer pour démarrer la boucle d'animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasStarted) {
+                hasStarted = true;
+                runAnimationCycle();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
+});
+</script>
 {% endblock %}
