@@ -27,7 +27,7 @@
             activeSlide: 0,
             slides: [
                 '{{ url_for('static', filename='images/PHOTO-2026-03-19-13-40-38.jpg') }}',
-                '{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55 2.jpg') }}',
+                '{{ url_for('static', filename='images/PHOTO-2023-11-27-16-51-55-2.jpg') }}',
                 '{{ url_for('static', filename='images/PHOTO-2024-05-06-22-32-51.jpg') }}',
                 '{{ url_for('static', filename='images/PHOTO-2026-03-19-13-39-57.jpg') }}'
             ],
@@ -111,7 +111,7 @@
             
             <!-- Centered expanding media card -->
             <div id="scroll-media-card" class="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden shadow-2xl" style="width: 300px; height: 400px; max-width: 95vw; max-height: 85vh;">
-                <video id="scroll-video" src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" autoplay muted loop playsinline class="w-full h-full object-cover rounded-3xl"></video>
+                <video id="scroll-video" src="{{ url_for('static', filename='videos/video-action-1.mp4') }}" poster="{{ url_for('static', filename='images/action-1.jpg') }}" autoplay muted loop playsinline class="w-full h-full object-cover rounded-3xl"></video>
                 <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
                 
                 <!-- Overlay labels inside the expanding card -->

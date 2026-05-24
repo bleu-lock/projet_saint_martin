@@ -68,52 +68,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="flex items-center gap-3 group py-1">
-                        <img class="h-14 md:h-16 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out animate-float-infinite" src="{{ url_for('static', filename='images/logo-saint martin.jpeg') }}" alt="Logo Association Saint Martin">
-                        <span id="typewriter-text" class="hidden md:inline-block font-serif font-bold text-lg md:text-xl text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 min-w-[200px]"></span>
-                        <span class="inline-block md:hidden font-serif font-bold text-base text-asm-bordeaux tracking-tight">Saint Martin</span>
+                    <a href="{{ url_for('index') }}" class="flex items-center gap-2 group py-1">
+                        <img class="h-12 md:h-14 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out animate-float-infinite" src="{{ url_for('static', filename='images/logo-saint-martin.jpeg') }}" alt="Logo Association Saint Martin">
+                        <span class="hidden md:inline-block font-serif font-bold text-base md:text-lg text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 whitespace-nowrap">Association Saint Martin</span>
+                        <span class="inline-block md:hidden font-serif font-bold text-sm text-asm-bordeaux tracking-tight whitespace-nowrap">Saint Martin</span>
                     </a>
                 </div>
-
-                <script>
-                    const messages = ["Association Saint Martin", "Aide humanitaire à Paris"];
-                    const target = document.getElementById('typewriter-text');
-                    let messageIndex = 0;
-                    let i = 0;
-                    let isDeleting = false;
-
-                    function type() {
-                        const currentMessage = messages[messageIndex];
-                        const current = currentMessage.substring(0, i);
-                        target.innerText = current;
-
-                        let typeSpeed = 80;
-
-                        if (isDeleting) {
-                            typeSpeed /= 2;
-                        }
-
-                        if (!isDeleting && i < currentMessage.length) {
-                            i++;
-                            setTimeout(type, typeSpeed);
-                        } else if (isDeleting && i > 0) {
-                            i--;
-                            setTimeout(type, typeSpeed);
-                        } else {
-                            if (!isDeleting) {
-                                setTimeout(() => {
-                                    isDeleting = true;
-                                    type();
-                                }, 2000);
-                            } else {
-                                isDeleting = false;
-                                messageIndex = (messageIndex + 1) % messages.length;
-                                setTimeout(type, 500);
-                            }
-                        }
-                    }
-                    window.addEventListener('DOMContentLoaded', type);
-                </script>
 
                 <style>
                     @keyframes floatInfinite {
@@ -229,7 +189,7 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                 <div class="md:col-span-4">
                     <div class="flex items-center gap-3 mb-8">
-                        <img src="{{ url_for('static', filename='images/logo-saint martin.jpeg') }}" class="h-12 w-auto rounded-lg shadow-sm" alt="Logo">
+                        <img src="{{ url_for('static', filename='images/logo-saint-martin.jpeg') }}" class="h-12 w-auto rounded-lg shadow-sm" alt="Logo">
                         <span class="font-serif font-bold text-2xl text-asm-bordeaux tracking-tight">Saint Martin</span>
                     </div>
                     <p class="text-gray-700 text-base leading-relaxed max-w-xs mb-8">

@@ -14,12 +14,12 @@
                     <p id="blur-anim-desc" class="text-base text-gray-700 leading-relaxed font-light" data-text="Nous nous réunissons chaque semaine. Un briefing complet est assuré avant chaque départ afin de vous accompagner et garantir la sécurité de tous."></p>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-2xl h-64">
-                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07 6.jpg') }}" class="w-full h-full object-cover" alt="Equipe">
+                    <img src="{{ url_for('static', filename='images/PHOTO-2026-03-19-14-09-07-6.jpg') }}" class="w-full h-full object-cover" alt="Equipe">
                 </div>
             </div>
 
-            <div class="container-scroll">
-                <div class="container-scroll-card backdrop-blur-md bg-white/60 rounded-3xl p-8 lg:p-12 shadow-xl border border-white/50">
+            <div class="">
+                <div class="backdrop-blur-md bg-white/60 rounded-3xl p-8 lg:p-12 shadow-xl border border-white/50">
                 <form action="{{ url_for('benevole') }}" method="POST" class="space-y-8">
                     <div class="relative pt-6">
                         <input type="text" id="nom" name="nom" required data-label="Nom complet *" class="animated-input">
