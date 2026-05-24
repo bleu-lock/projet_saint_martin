@@ -274,9 +274,9 @@
             </div>
 
             <!-- Dots -->
-            <div class="flex justify-center gap-2 mt-2">
+            <div class="flex justify-center items-center gap-2 mt-2">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <span class="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
+                    <span class="inline-block w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
                           :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"
                           @click="active = index; document.getElementById('impact-slider').scrollTo({left: index * (window.innerWidth < 768 ? 276 : 474), behavior: 'smooth'})"></span>
                 </template>
