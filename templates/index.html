@@ -223,17 +223,20 @@
 </div>
 
 <!-- Impact Gallery Section -->
-<section class="py-10 bg-transparent overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <span class="text-asm-gold font-bold tracking-widest uppercase text-xs mb-4 block">Galerie d'Impact</span> 
+<section class="py-10 bg-transparent" style="perspective: none;">
+    <!-- Title: stays in constrained container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <div class="text-center">
+            <span class="text-asm-gold font-bold tracking-widest uppercase text-xs mb-4 block">Galerie d'Impact</span>
             <div id="vapour-wrapper" class="relative w-full h-[80px] md:h-[120px] flex items-center justify-center max-w-4xl mx-auto overflow-visible select-none">
                 <canvas id="vapour-canvas" style="width: 100%; height: 100%; pointer-events: none;"></canvas>
             </div>
             <div class="w-16 h-1 bg-asm-gold mx-auto mt-4"></div>
         </div>
+    </div>
 
-        <div class="relative group" x-data="{
+    <!-- Slider: FULL-BLEED — not inside px-4 container -->
+    <div x-data="{
             active: 0,
             slides: [
                 { img: '{{ url_for('static', filename='images/action-5.jpg') }}', title: 'Distribution Alimentaire', desc: 'Des produits frais et variés.' },
@@ -248,39 +251,41 @@
             ],
             updateActive(el) {
                 const first = el.querySelector('[data-card]');
-                const cardWidth = first ? first.getBoundingClientRect().width + 16 : 300;
-                this.active = Math.round(el.scrollLeft / cardWidth);
+                const gap = 16;
+                const cw = first ? first.getBoundingClientRect().width + gap : 300;
+                this.active = Math.round(el.scrollLeft / cw);
             }
         }">
-            <!-- Main Slider Container -->
-            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-8 pl-4 md:pl-0"
-                 id="impact-slider"
-                 style="scroll-padding-inline-start: 1rem;"
-                 @scroll.debounce.50ms="updateActive($el)">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <div data-card class="flex-none w-[82vw] md:w-[450px] snap-start group/card">
-                        <div class="backdrop-blur-md bg-white/60 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white/50 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-asm-gold/20">
-                            <div class="h-[52vw] md:h-[400px] relative overflow-hidden">
-                                <img :src="slide.img" class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" alt="Impact">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-serif font-bold text-lg text-asm-bordeaux mb-2" x-text="slide.title"></h3>
-                                <p class="text-gray-500 text-xs italic" x-text="slide.desc"></p>
+        <!-- Scroll rail: full width, own left padding so first card has visible inset -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 md:gap-6 pb-6"
+             id="impact-slider"
+             style="padding-left: 5vw; padding-right: 5vw; scroll-padding-left: 5vw;"
+             @scroll.debounce.50ms="updateActive($el)">
+            <template x-for="(slide, index) in slides" :key="index">
+                <div data-card class="flex-none w-[82vw] md:w-[450px] snap-start group/card">
+                    <div class="backdrop-blur-md bg-white/60 rounded-[2rem] overflow-hidden shadow-xl border-2 border-white/60 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:border-asm-gold/30">
+                        <div class="h-[56vw] md:h-[400px] relative overflow-hidden">
+                            <img :src="slide.img" class="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" alt="Impact">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                            <!-- Title overlay on image -->
+                            <div class="absolute inset-x-0 bottom-0 p-4 z-10">
+                                <h3 class="font-serif font-bold text-base text-white drop-shadow-lg" x-text="slide.title"></h3>
+                                <p class="text-gray-300 text-xs mt-0.5" x-text="slide.desc"></p>
                             </div>
                         </div>
                     </div>
-                </template>
-            </div>
+                </div>
+            </template>
+        </div>
 
-            <!-- Dots -->
-            <div class="flex justify-center items-center gap-2 mt-2">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <span class="inline-block w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
-                          :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"
-                          @click="active = index; const slider = document.getElementById('impact-slider'); const card = slider.querySelector('[data-card]'); const width = card ? card.getBoundingClientRect().width + 16 : 300; slider.scrollTo({left: index * width, behavior: 'smooth'})"></span>
-                </template>
-            </div>
+        <!-- Dots -->
+        <div class="flex justify-center items-center gap-2 mt-4 px-4">
+            <template x-for="(slide, index) in slides" :key="index">
+                <span class="inline-block w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
+                      :class="active === index ? 'bg-asm-bordeaux w-6' : 'bg-gray-200'"
+                      @click="active = index; const slider = document.getElementById('impact-slider'); const card = slider.querySelector('[data-card]'); const width = card ? card.getBoundingClientRect().width + 16 : 300; slider.scrollTo({left: index * width, behavior: 'smooth'})"></span>
+            </template>
+        </div>
         </div>
     </div>
 </section>
