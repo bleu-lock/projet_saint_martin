@@ -70,8 +70,8 @@
                 <div class="flex items-center">
                     <a href="{{ url_for('index') }}" class="flex items-center gap-2 group py-1">
                         <img class="h-12 md:h-14 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform duration-500 ease-in-out animate-float-infinite" src="{{ url_for('static', filename='images/logo-saint-martin.jpeg') }}" alt="Logo Association Saint Martin">
-                        <span class="hidden md:inline-block font-serif font-bold text-base md:text-lg text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 whitespace-nowrap">Association Saint Martin</span>
-                        <span class="inline-block md:hidden font-serif font-bold text-sm text-asm-bordeaux tracking-tight whitespace-nowrap">Saint Martin</span>
+                        <span id="brand-text-desktop" class="hidden md:inline-block font-serif font-bold text-base md:text-lg text-asm-bordeaux tracking-wide group-hover:text-red-700 transition-colors duration-300 whitespace-nowrap overflow-hidden" style="clip-path: inset(-2px 0);">Association Saint Martin</span>
+                        <span id="brand-text-mobile" class="inline-block md:hidden font-serif font-bold text-sm text-asm-bordeaux tracking-tight whitespace-nowrap overflow-hidden" style="clip-path: inset(-2px 0);">Saint Martin</span>
                     </a>
                 </div>
 
@@ -296,6 +296,34 @@
         }
 
 
+    });
+
+    // Brand text: Framer Motion-style letter stagger on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const targets = ['brand-text-desktop', 'brand-text-mobile'];
+        targets.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const text = el.textContent;
+            el.innerHTML = '';
+            [...text].forEach(char => {
+                const s = document.createElement('span');
+                s.className = 'inline-block';
+                s.style.willChange = 'transform, opacity';
+                s.textContent = char === ' ' ? ' ' : char;
+                el.appendChild(s);
+            });
+            if (typeof anime !== 'undefined') {
+                anime({
+                    targets: el.querySelectorAll('span'),
+                    translateY: ['60%', '0%'],
+                    opacity: [0, 1],
+                    delay: anime.stagger(38, { start: 80 }),
+                    duration: 700,
+                    easing: 'cubicBezier(0.22, 1, 0.36, 1)'
+                });
+            }
+        });
     });
 
     // Déplacement global du blob bordeaux suivant le curseur sur toute la page
