@@ -248,12 +248,31 @@ section {
         animation-duration: 20s !important;
     }
     .marquee-container > div > div {
-        width: 180px !important; /* Images plus petites sur mobile */
+        width: 180px !important;
         height: 250px !important;
     }
 
     /* Navbar fixes */
     .film-grain { display: none; }
+
+    /* Forms: full width, no overflow */
+    form { width: 100%; }
+
+    /* Prevent iOS zoom on input focus (font-size must be >= 16px) */
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+
+    /* Touch-friendly tap targets */
+    button, a[role="button"], input[type="submit"] {
+        min-height: 44px;
+    }
+
+    /* Animated input labels: ensure they don't overflow on narrow screens */
+    .animated-input {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
 }
 
 /* Hero section text scaling */
