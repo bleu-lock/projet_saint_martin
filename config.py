@@ -6,8 +6,10 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'cle_par_defaut_tres_securisee'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    # Vercel has a read-only filesystem; use /tmp for SQLite in serverless env
+    _default_db = 'sqlite:////tmp/app.db' if os.environ.get('VERCEL') else \
         'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or _default_db
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Configuration Flask-Mail
